@@ -1,0 +1,12 @@
+query IndexQuery {
+  markdownRemark(frontmatter: { path: { eq: "/introduction" } }) {
+    id
+    html
+    frontmatter {
+      title
+      path
+      date
+      excerpt
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@tailwind preflight;
+
+@tailwind components;
+
+@tailwind utilities;
+
+body,
+html,
+#root {
+  height: 100%;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  @apply .bg-grey-lightest .font-sans .font-normal .text-base .text-grey-dark .leading-normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply .font-serif .text-grey-darker .font-normal mb-4;
+}
+
+h2 {
+  @apply .text-4xl mb-8;
+}
+
+p {
+  @apply .text-sm .leading-loose .mb-6;
+}
+
+pre {
+  @apply text-sm text-white leading-normal bg-indigo-darkest;
+  @apply px-8 py-8;
+}
+
+.doc-content pre {
+  @apply -mx-8 mb-8 py-4;
+}
+
+.doc-content .language-text {
+  @apply bg-grey-lighter px-2;
+}
+
+pre .comment {
+  @apply text-grey-dark;
+}
+
+a {
+  @apply .text-purple-light;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.language-graphql span.token.attr-name {
+  @apply .text-indigo-light;
+}
+
+.language-graphql span.token.directive {
+  @apply .text-purple-lighter;
+}
