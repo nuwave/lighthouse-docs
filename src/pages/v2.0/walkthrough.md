@@ -6,6 +6,6 @@ title: "Walkthrough"
 
 ## Walkthrough
 
-A video walkthrough is [available on youtube](https://youtu.be/ZksAIAaQwnc) while the text version is still being written.
+A video walkthrough is [available on youtube](https://youtu.be/y19EaW2X7ac) while the text version is still being written.
 
 **TODO**
