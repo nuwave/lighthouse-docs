@@ -19,7 +19,7 @@ export const Navigation: React.SFC = props => (
   <nav className="flex">
     <NavLink to="/">Home</NavLink>
     <NavLink to="/docs/2.0/installation">Documentation</NavLink>
-    <NavLink to="/">Walkthrough</NavLink>
+    <NavLink to="/docs/2.0/walkthrough">Walkthrough</NavLink>
     <NavLink to="https://github.com/nuwave/lighthouse" target="_blank">
       Code
     </NavLink>

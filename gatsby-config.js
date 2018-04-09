@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `lighthouse-php`,
   siteMetadata: {
     title: 'Gatsby Default Starter',
   },
