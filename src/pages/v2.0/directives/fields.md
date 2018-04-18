@@ -22,7 +22,7 @@ Field directives can be attached to any field of an Object Type.
 
 <br />
 
-<a name="auth" />
+<a name="auth"></a>
 
 ### @auth
 
@@ -45,7 +45,7 @@ query Me {
 }
 ```
 
-<a name="belongsTo" />
+<a name="belongsTo"></a>
 
 ### @belongsTo
 
@@ -82,7 +82,7 @@ type Post {
 }
 ```
 
-<a name="create" />
+<a name="create"></a>
 
 ### @create
 
@@ -96,7 +96,7 @@ type Mutation {
 }
 ```
 
-<a name="delete" />
+<a name="delete"></a>
 
 ### @delete
 
@@ -110,7 +110,7 @@ type Mutation {
 }
 ```
 
-<a name="event" />
+<a name="event"></a>
 
 ### @event
 
@@ -123,7 +123,7 @@ type Mutation {
 }
 ```
 
-<a name="field" />
+<a name="field"></a>
 
 ### @field
 
@@ -145,7 +145,7 @@ type Mutation {
 }
 ```
 
-<a name="globalId" />
+<a name="globalId"></a>
 
 ### @globalId
 
@@ -158,7 +158,7 @@ type Mutation {
 }
 ```
 
-<a name="hasMany" />
+<a name="hasMany"></a>
 
 ### @hasMany
 
@@ -176,7 +176,7 @@ type User {
 }
 ```
 
-<a name="inject" />
+<a name="inject"></a>
 
 ### @inject
 
@@ -190,7 +190,7 @@ type Mutation {
 }
 ```
 
-<a name="paginate" />
+<a name="paginate"></a>
 
 ### @paginate
 
@@ -206,7 +206,7 @@ type Query {
 }
 ```
 
-<a name="rename" />
+<a name="rename"></a>
 
 ### @rename
 

@@ -15,7 +15,7 @@ Node directives can be placed on Object/Input Type nodes.
 
 <br />
 
-<a name="bcrypt" />
+<a name="bcrypt"></a>
 
 ### @bcrypt
 
@@ -44,7 +44,7 @@ class UserMutator
 }
 ```
 
-<a name="validate" />
+<a name="validate"></a>
 
 ### @validate
 

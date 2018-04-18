@@ -13,7 +13,7 @@ Node directives can be placed on Object/Input Type nodes.
 
 <br />
 
-<a name="group" />
+<a name="group"></a>
 
 ### @group
 
@@ -29,7 +29,7 @@ type Mutation @group(middleware: ["api:auth"]) {
 }
 ```
 
-<a name="interface" />
+<a name="interface"></a>
 
 ### @interface
 
