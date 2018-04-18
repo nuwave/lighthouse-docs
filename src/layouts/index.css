@@ -4661,9 +4661,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Miriam Libre, Constantia, Lucida Bright, Lucidabright,
+  /* font-family: Miriam Libre, Constantia, Lucida Bright, Lucidabright,
     Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif,
-    Georgia, serif;
+    Georgia, serif; */
   color: #3d4852;
   font-weight: 400;
   margin-bottom: 1rem;
@@ -4675,9 +4675,15 @@ h2 {
 }
 
 p {
-  font-size: 0.875rem;
   line-height: 2;
   margin-bottom: 1.5rem;
+}
+
+h2:not([class]) + p {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin: 1.5rem 0;
 }
 
 pre {
@@ -4689,6 +4695,12 @@ pre {
   padding-right: 2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+header.bg-purple-darkest {
+  background-image: url(/img/bg-hero@2x.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .doc-content pre {
