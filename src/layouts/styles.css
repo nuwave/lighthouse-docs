@@ -26,8 +26,15 @@ h2 {
   @apply .text-4xl mb-8;
 }
 
+h2:not([class]) + p {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin: 1.5rem 0;
+}
+
 p {
-  @apply .text-sm .leading-loose .mb-6;
+  @apply .leading-loose .mb-6;
 }
 
 pre {
