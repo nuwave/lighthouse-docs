@@ -21,7 +21,6 @@ Field directives can be attached to any field of an Object Type.
 * [The **@rename** directive](#rename) used to rename on argument on the server side.
 
 <br />
-<br />
 
 <a name="auth" />
 
