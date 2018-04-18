@@ -1,14 +1,12 @@
 ---
-path: "/docs/2.0/directives"
+path: "/docs/2.0/directives/fields"
 date: "2018-03-31T20:37:30.954Z"
-title: "Directives"
+title: "Field Directives"
 ---
 
-## Directives
-
-Lighthouse comes with a handful of helpful directives to speed up development of your schema.
-
 ## Field Directives
+
+Field directives can be attached to any field of an Object Type.
 
 ### @auth
 
@@ -181,21 +179,5 @@ The `@rename` directive can be used to rename on argument on the server side. Th
 ```graphql
 type User {
   createdAt: String! @rename(attribute: "created_at")
-}
-```
-
-## Node Directives
-
-### @group
-
-The `@group` directive can be used to set a namespace and/or middleware on a set of fields.
-
-```graphql
-type User @group(namespace: "App\\Http\\GraphQL\\Types") {
-  email: String @field(resolver: "UserType@email")
-}
-
-type Mutation @group(middleware: ["api:auth"]) {
-  createPost(title: String!): Post
 }
 ```

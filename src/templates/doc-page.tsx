@@ -1,17 +1,18 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
+import { RouteComponentProps } from 'react-router-dom';
 import { DocPageQueryQuery } from '../data/schema';
 import { Sidebar } from '../components';
 
-interface Props {
+interface Props extends RouteComponentProps<{}> {
   data: DocPageQueryQuery;
 }
 
-const Template: React.SFC<Props> = ({ data }) => (
+const Template: React.SFC<Props> = ({ data, location }) => (
   <section className="container">
     <div className="flex flex-wrap">
       <div className="w-full md:w-1/5 pt-4">
-        <Sidebar />
+        <Sidebar pathname={location.pathname} />
       </div>
       <div className="w-full md:w-4/5">
         <div className="py-8">
