@@ -8,6 +8,13 @@ title: "Node Directives"
 
 Node directives can be placed on Object/Input Type nodes.
 
+* [The **@group** directive](#group) Ad a namespace and/or middleware.
+* [The **@interface** directive](#interface) Used for defining Interfaces.
+
+<br />
+
+<a name="group" />
+
 ### @group
 
 The `@group` directive can be used to set a namespace and/or middleware on a set of fields.
@@ -21,6 +28,8 @@ type Mutation @group(middleware: ["api:auth"]) {
   createPost(title: String!): Post
 }
 ```
+
+<a name="interface" />
 
 ### @interface
 
