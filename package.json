@@ -11,7 +11,9 @@
     "gh-pages": "^1.1.0",
     "react-helmet": "^5.2.0"
   },
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "license": "MIT",
   "scripts": {
     "start": "npm run develop",
@@ -19,12 +21,9 @@
     "develop": "gatsby develop",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "format": "prettier --write 'src/**/*.js'",
-    "graphql:schema":
-      "apollo-codegen introspect-schema http://localhost:8000/___graphql --output ./src/data/schema.json",
-    "graphql:generate":
-      "apollo-codegen generate ./src/**/*.graphql --schema ./src/data/schema.json --target typescript --output ./src/data/schema.ts",
-    "tailwind:build":
-      "./node_modules/.bin/tailwind build ./src/layouts/styles.css -c ./tailwind.js -o ./src/layouts/index.css",
+    "graphql:schema": "apollo-codegen introspect-schema http://localhost:8000/___graphql --output ./src/data/schema.json",
+    "graphql:generate": "apollo-codegen generate ./src/**/*.graphql --schema ./src/data/schema.json --target typescript --output ./src/data/schema.ts",
+    "tailwind:build": "./node_modules/.bin/tailwind build ./src/layouts/styles.css -c ./tailwind.js -o ./src/layouts/index.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
