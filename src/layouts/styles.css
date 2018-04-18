@@ -46,6 +46,17 @@ pre {
   @apply -mx-8 mb-8 py-4;
 }
 
+.doc-content h3 {
+  margin-top: 4.2rem;
+  font-size: 1.6rem;
+}
+.doc-content ul {
+  list-style: disc;
+}
+.doc-content ul li {
+  line-height: 1.8rem;
+}
+
 .doc-content .language-text {
   @apply bg-grey-lighter px-2;
 }

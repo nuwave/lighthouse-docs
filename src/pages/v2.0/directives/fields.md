@@ -17,7 +17,7 @@ Field directives can be attached to any field of an Object Type.
 * [The **@globalId** directive](#globalId) converts a globalId field back to it's original id.
 * [The **@hasMany** directive](#hasMany) used to create a connection between two eloquent models.
 * [The **@inject** directive](#inject) can be used to inject a value from the context.
-* [The **@paginate** directive](#paginate) similar to the `@hasMany` directive in that it return a `paginator` or `relay` connection.
+* [The **@paginate** directive](#paginate) similar to `@hasMany` in that it return a `paginator` or `relay` connection.
 * [The **@rename** directive](#rename) used to rename on argument on the server side.
 
 <br />
