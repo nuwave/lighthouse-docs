@@ -4695,6 +4695,8 @@ pre {
   margin-bottom: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  overflow-x: scroll !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 .doc-content h3 {
