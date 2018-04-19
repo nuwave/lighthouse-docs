@@ -8,17 +8,17 @@ title: "Field Directives"
 
 Field directives can be attached to any field of an Object Type.
 
-* [The **@auth** directive](#auth) provides the currently authenticated user.
-* [The **@belongsTo** directive](#belongsTo) eager loads the eloquent relationship.
-* [The **@create** directive](#create) its used to create new records.
-* [The **@delete** directive](#delete) used to delete.
-* [The **@event** directive](#event) allows you to fire a Laravel event.
-* [The **@field** directive](#field) points to a class and method used to resolve a field.
-* [The **@globalId** directive](#globalId) converts a globalId field back to it's original id.
-* [The **@hasMany** directive](#hasMany) used to create a connection between two eloquent models.
-* [The **@inject** directive](#inject) can be used to inject a value from the context.
-* [The **@paginate** directive](#paginate) similar to `@hasMany` in that it return a `paginator` or `relay` connection.
-* [The **@rename** directive](#rename) used to rename on argument on the server side.
+* [**@auth** directive](#auth) provides the currently authenticated user.
+* [**@belongsTo** directive](#belongsTo) eager loads the eloquent relationship.
+* [**@create** directive](#create) its used to create new records.
+* [**@delete** directive](#delete) used to delete.
+* [**@event** directive](#event) allows you to fire a Laravel event.
+* [**@field** directive](#field) points to a class and method used to resolve a field.
+* [**@globalId** directive](#globalId) converts a globalId field back to it's original id.
+* [**@hasMany** directive](#hasMany) used to create a connection between two eloquent models.
+* [**@inject** directive](#inject) can be used to inject a value from the context.
+* [**@paginate** directive](#paginate) similar to `@hasMany` in that it return a `paginator` or `relay` connection.
+* [**@rename** directive](#rename) used to rename on argument on the server side.
 
 <br />
 
