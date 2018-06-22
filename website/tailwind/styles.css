@@ -1,0 +1,191 @@
+@tailwind preflight;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Miriam+Libre");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply .font-serif !important;
+}
+
+h1,
+h2 {
+  @apply .font-light .mb-4;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  @apply .font-normal .mb-2;
+}
+
+/*
+ * Header
+ */
+.fixedHeaderContainer {
+  @apply .bg-purple-darkest .py-4;
+}
+
+.home-container h2,
+.fixedHeaderContainer h2 {
+  color: #fff !important;
+}
+
+@media only screen and (min-width: 736px) {
+  .navPusher {
+    padding-top: 66px;
+  }
+}
+
+.navigationSlider .slidingNav ul {
+  @apply .bg-purple-darkest;
+}
+
+.navigationSlider .slidingNav ul li {
+  @apply .ml-2;
+}
+
+.navigationSlider .slidingNav ul li a {
+  @apply .text-sm;
+}
+
+.docsSliderActive nav.toc .navBreadcrumb {
+  background: transparent;
+}
+
+.docsNavContainer {
+  @apply .bg-grey-lighter;
+}
+
+@media (min-width: 768px) {
+  .docsNavContainer {
+    background: transparent;
+  }
+}
+
+/**
+ * Homepage
+ */
+.home-container p {
+  @apply .leading-loose .text-sm;
+}
+
+/*
+ * Main
+ */
+.docMainWrapper .mainContainer {
+  background-color: #fff;
+}
+
+.docMainWrapper .mainContainer h1,
+.docMainWrapper .mainContainer h2,
+.docMainWrapper .mainContainer h3,
+.docMainWrapper .mainContainer h4,
+.docMainWrapper .mainContainer h5,
+.docMainWrapper .mainContainer h6 {
+  @apply .text-grey-darker !important;
+}
+
+.docMainWrapper .mainContainer .post .postHeader h1 {
+  @apply .mb-8;
+}
+
+.home-container p,
+.docMainWrapper .mainContainer p {
+  @apply .text-sm;
+}
+
+.hljs {
+  @apply .bg-purple-darkest .text-white;
+}
+
+.button {
+  @apply .border-purple-darkest .text-purple-darkest .text-xs .font-bold .tracking-wide .bg-white;
+  border-radius: 0;
+}
+
+.button:hover {
+  @apply .bg-purple-darkest .text-white;
+}
+
+/*
+ * Sidebar
+ */
+nav.toc .toggleNav,
+nav.toc .toggleNav .navGroup.navGroupActive,
+nav.toc .toggleNav .navGroup.navGroupActive h3 {
+  background: transparent;
+}
+
+nav.toc .toggleNav .navGroup.navGroupActive h3 {
+  @apply .text-grey-darker !important;
+}
+
+nav.toc .toggleNav .navGroup.navGroupActive ul {
+  @apply .pt-0 .pl-2;
+}
+
+nav.toc .toggleNav ul li a {
+  @apply .text-grey-dark;
+}
+
+/*
+ * Homepage
+ */
+
+pre {
+  @apply .bg-purple-darkest !important;
+}
+
+.mainContainer pre {
+  @apply .leading-loose .my-8 .rounded;
+}
+
+pre code .comment,
+pre code .hljs-comment {
+  @apply .text-grey-dark;
+}
+
+pre code {
+  @apply .text-white !important;
+  font-size: 12px;
+  text-shadow: none !important;
+}
+
+pre code .token.attr-name {
+  @apply .text-indigo-lighter;
+}
+
+pre code .token.operator {
+  @apply .text-indigo-lighter;
+}
+
+pre code .token.string,
+pre code .hljs-string {
+  @apply .text-grey-light;
+}
+
+pre code .token.function,
+pre code .hljs-keyword {
+  @apply .text-purple-lighter;
+}
+
+/*
+ * Footer
+ */
+footer.nav-footer {
+  @apply .bg-purple-darkest .text-sm;
+}
+
+footer .sitemap h5 {
+  color: #fff !important;
+}
+

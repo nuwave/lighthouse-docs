@@ -1,0 +1,22 @@
+{
+  "version-2.0-docs": {
+    "Getting Started": [
+      "version-2.0-introduction",
+      "version-2.0-installation",
+      "version-2.0-configuration"
+    ],
+    "Schema": [
+      "version-2.0-schema"
+    ],
+    "Directives": [
+      "version-2.0-directives-args",
+      "version-2.0-directives-fields",
+      "version-2.0-directives-nodes"
+    ]
+  },
+  "version-2.0-walkthrough": {
+    "Walkthrough": [
+      "version-2.0-walkthrough"
+    ]
+  }
+}
