@@ -1,6 +1,5 @@
 ---
 id: version-2.1-directives-crud
-original_id:   
 title: Eloquent CRUD
 original_id: directives-crud
 ---

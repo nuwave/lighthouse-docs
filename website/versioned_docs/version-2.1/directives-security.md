@@ -1,6 +1,5 @@
 ---
 id: version-2.1-directives-security
-original_id:   
 title: Security
 original_id: directives-security
 ---

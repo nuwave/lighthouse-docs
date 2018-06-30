@@ -1,6 +1,5 @@
 ---
 id: version-2.1-directives-laravel
-original_id:   
 title: Laravel Helpers
 original_id: directives-laravel
 ---

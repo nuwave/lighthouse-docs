@@ -1,6 +1,5 @@
 ---
 id: version-2.1-directives-queries
-original_id: 
 title: Eloquent Queries
 original_id: directives-queries
 ---

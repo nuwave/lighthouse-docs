@@ -9,22 +9,20 @@
 // site configuration options.
 
 /* List of projects/orgs using your project for the users page */
-const users = [
-  {
-    caption: "User1",
-    // You will need to prepend the image path with your baseUrl
-    // if it is not '/', like: '/test-site/img/logo.svg'.
-    image: "/img/logo.svg",
-    infoLink: "https://www.facebook.com",
-    pinned: true
-  }
-];
+const users = [{
+  caption: "User1",
+  // You will need to prepend the image path with your baseUrl
+  // if it is not '/', like: '/test-site/img/logo.svg'.
+  image: "/img/logo.svg",
+  infoLink: "https://www.facebook.com",
+  pinned: true
+}];
 
 const siteConfig = {
-  title: "Lighthouse" /* title for your website */,
+  title: "Lighthouse" /* title for your website */ ,
   tagline: "GraphQL Server for Laravel",
-  url: "https://lighthouse-php.netlify.com" /* your website url */,
-  baseUrl: "/" /* base url for your project */,
+  url: "https://lighthouse-php.netlify.com" /* your website url */ ,
+  baseUrl: "/" /* base url for your project */ ,
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
@@ -37,11 +35,22 @@ const siteConfig = {
   //   organizationName: 'JoelMarcey'
 
   // For no header links in the top nav bar -> headerLinks: [],
-  headerLinks: [
-    { doc: "introduction", label: "Docs" },
-    { doc: "walkthrough", label: "Walkthrough" },
-    { href: "https://github.com/nuwave/lighthouse", label: "Code" },
-    { href: "https://github.com/nuwave/lighthouse/issues", label: "Issues" }
+  headerLinks: [{
+      doc: "introduction",
+      label: "Docs"
+    },
+    {
+      doc: "walkthrough",
+      label: "Walkthrough"
+    },
+    {
+      href: "https://github.com/nuwave/lighthouse",
+      label: "Code"
+    },
+    {
+      href: "https://github.com/nuwave/lighthouse/issues",
+      label: "Issues"
+    }
   ],
 
   // If you have users set above, you add it here:
@@ -86,7 +95,7 @@ const siteConfig = {
   // template. For example, if you need your repo's URL...
   repoUrl: "https://github.com/nuwave/lighthouse",
 
-  usePrism: ["jsx", "php", "graphql"]
+  // usePrism: true
 };
 
 module.exports = siteConfig;

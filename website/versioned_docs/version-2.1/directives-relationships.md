@@ -1,6 +1,5 @@
 ---
 id: version-2.1-directives-relationships
-original_id:   
 title: Eloquent Relationships
 original_id: directives-relationships
 ---
