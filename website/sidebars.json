@@ -1,0 +1,11 @@
+{
+  "docs": {
+    "Getting Started": ["introduction", "installation", "configuration"],
+    "Schema": ["schema"],
+
+    "Directives": ["directives-args", "directives-fields", "directives-nodes"]
+  },
+  "walkthrough": {
+    "Walkthrough": ["walkthrough"]
+  }
+}
