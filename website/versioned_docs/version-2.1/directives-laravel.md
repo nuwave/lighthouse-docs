@@ -1,14 +1,16 @@
 ---
-id: version-2.0-directives-args
-title: Arguments
-original_id: directives-args
+id: version-2.1-directives-laravel
+original_id:   
+title: Laravel Helpers
+original_id: directives-laravel
 ---
 
-Argument directives can be used on any field of an Object Type.
+Lighthouse comes with several Laravel specific directives that should help keep things familiar.
 
 <br />
-[**@bcrypt** directive](#bcrypt) used to run the `bcrypt` on the attached argument.<br /><br />
-[**@validate** directive](#validate) used to validate the input of a field.<br />
+[**@bcrypt** directive](#bcrypt)<br />
+[**@event** directive](#event)<br />
+[**@validate** directive](#validate)<br />
 <br />
 
 ## @bcrypt
@@ -35,6 +37,17 @@ class UserMutator
           'password' => $args['password']
         ]);
     }
+}
+```
+
+## @event
+
+The `@event` directive allows you to fire an event after a mutation has taken place. It requires the `fire` argument that should be the class name of the event you want to fire.
+
+```graphql
+type Mutation {
+  createPost(title: String!, content: String!): Post
+    @event(fire: "App\\Events\\PostCreated")
 }
 ```
 

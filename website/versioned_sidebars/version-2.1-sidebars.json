@@ -1,0 +1,24 @@
+{
+  "version-2.1-docs": {
+    "Getting Started": [
+      "version-2.1-introduction",
+      "version-2.1-installation",
+      "version-2.1-configuration"
+    ],
+    "Schema": [
+      "version-2.1-schema"
+    ],
+    "Directives": [
+      "version-2.1-directives-laravel",
+      "version-2.1-directives-relationships",
+      "version-2.1-directives-queries",
+      "version-2.1-directives-crud",
+      "version-2.1-directives-security"
+    ]
+  },
+  "version-2.1-walkthrough": {
+    "Walkthrough": [
+      "version-2.1-walkthrough"
+    ]
+  }
+}
