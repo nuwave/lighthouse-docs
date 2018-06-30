@@ -27,13 +27,14 @@ class Versions extends React.Component {
               <h2>{siteConfig.title + " Versions"}</h2>
             </header>
             <p>New versions of this project are released every so often.</p>
+            <br />
             <h3 id="latest">Current version (Stable)</h3>
             <table className="versions">
               <tbody>
                 <tr>
                   <th>{latestVersion}</th>
                   <td>
-                    <a href={""}>Documentation</a>
+                    <a href={"/docs/introduction.html"}>Documentation</a>
                   </td>
                   <td>
                     <a href={""}>Release Notes</a>
@@ -41,6 +42,7 @@ class Versions extends React.Component {
                 </tr>
               </tbody>
             </table>
+            {/* 
             <p>
               This is the version that is configured automatically when you
               first install this project.
@@ -58,18 +60,21 @@ class Versions extends React.Component {
                   </td>
                 </tr>
               </tbody>
-            </table>
-            <p>Other text describing this section.</p>
+            </table> 
+            */}
+            <br />
             <h3 id="archive">Past Versions</h3>
             <table className="versions">
               <tbody>
                 {versions.map(
                   version =>
                     version !== latestVersion && (
-                      <tr>
+                      <tr key={version}>
                         <th>{version}</th>
                         <td>
-                          <a href={""}>Documentation</a>
+                          <a href={`/docs/${version}/introduction.html`}>
+                            Documentation
+                          </a>
                         </td>
                         <td>
                           <a href={""}>Release Notes</a>
