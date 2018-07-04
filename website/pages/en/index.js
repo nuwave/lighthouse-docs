@@ -134,7 +134,7 @@ class Index extends React.Component {
                   how to create your own directives and how to create your own
                   resolvers, so let's get started!
                 </p>
-                <Button href="/docs/2.0/installation">Get Started</Button>
+                <Button href="/docs/installation">Get Started</Button>
               </div>
               <div className="w-full md:w-1/3">
                 <div className="md:-mt-16 shadow-md">
