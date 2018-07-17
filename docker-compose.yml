@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  docs:
+    image: node:alpine
+    user: "node"
+    working_dir: /home/node/app/website
+    environment:
+      # Necessary if the mount comes from a windows filesystem
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 80:3000
+    volumes:
+      - ./:/home/node/app
+    command: sh -c "yarn && yarn run start"
