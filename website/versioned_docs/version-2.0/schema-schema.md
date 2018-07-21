@@ -47,9 +47,20 @@ type Mutation {
 ## Scalar Types
 
 Scalar types are custom types that require a `directive` (which we'll learn about later) to serialize, deserialize and validate values.
+<br><br>
+Ligthouse includes a DateTime scalar type. This scalar type can be used to handle Carbon DateTime fields. 
+You can use it inside your schema like this:
 
 ```graphql
-scalar DateTime @scalar(class: "DateTimeScalar")
+scalar DateTime @scalar(class: "App\\GraphQL\\Scalars\\DateTimeScalar")
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  created_at: DateTime!
+  updated_at: DateTime
+}
 ```
 
 ## Enum Types
