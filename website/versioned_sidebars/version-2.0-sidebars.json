@@ -7,7 +7,7 @@
     ],
     "Schema": [
       "version-2.0-schema",
-      "version-2.0-schema-scalar-types"
+      "version-2.0-schema-scalars"
     ],
     "Directives": [
       "version-2.0-directives-args",
