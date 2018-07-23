@@ -5,74 +5,56 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require("react");
+const React = require('react')
 
-class Footer extends React.Component {
-  docUrl(doc, language) {
-    const baseUrl = this.props.config.baseUrl;
-    return baseUrl + "docs/" + doc;
+const Footer = ({config}) => {
+  const docUrl = doc => {
+    return config.baseUrl + 'docs/' + doc
   }
-
-  pageUrl(doc, language) {
-    const baseUrl = this.props.config.baseUrl;
-    return baseUrl + (language ? language + "/" : "") + doc;
-  }
-
-  render() {
-    const currentYear = new Date().getFullYear();
-    return (
-      <footer className="nav-footer" id="footer">
-        <section className="sitemap">
-          <a href={this.props.config.baseUrl} className="nav-home">
-            {this.props.config.footerIcon && (
-              <img
-                src={this.props.config.baseUrl + this.props.config.footerIcon}
-                alt={this.props.config.title}
-                width="66"
-                height="58"
-              />
-            )}
+  
+  return (
+    <footer className="nav-footer" id="footer">
+      <section className="sitemap">
+        <a href={config.baseUrl} className="nav-home">
+          {config.footerIcon && (
+            <img
+              src={config.baseUrl + config.footerIcon}
+              alt={config.title}
+              width="66"
+              height="58"
+            />
+          )}
+        </a>
+        <div>
+          <h5>Docs</h5>
+          <a href={docUrl('installation')}>
+            Getting Started
           </a>
-          <div>
-            <h5>Docs</h5>
-            <a href={this.docUrl("introduction.html", this.props.language)}>
-              Getting Started
-            </a>
-            <a href={this.docUrl("directives-args.html", this.props.language)}>
-              Lighthouse Directives
-            </a>
-            <a href={this.docUrl("walkthrough.html", this.props.language)}>
-              Walkthrough
-            </a>
-          </div>
-          <div>
-            <h5>Walkthrough</h5>
-            <a href="https://youtu.be/y19EaW2X7ac">Video</a>
-            <a href={this.docUrl("walkthrough.html", this.props.language)}>
-              Documentation
-            </a>
-          </div>
-          <div>
-            <h5>Repository</h5>
-            <a href="https://github.com/nuwave/lighthouse">GitHub</a>
-            <a href="https://github.com/nuwave/lighthouse/issues">Issues</a>
-            <a
-              className="github-button"
-              href={this.props.config.repoUrl}
-              data-icon="octicon-star"
-              data-count-href="/nuwave/lighthouse"
-              data-show-count={true}
-              data-count-aria-label="# stargazers on GitHub"
-              aria-label="Star this project on GitHub"
-            >
-              Star
-            </a>
-          </div>
-        </section>
-        <section className="copyright">{this.props.config.copyright}</section>
-      </footer>
-    );
-  }
+          <a href={docUrl('directives')}>
+            Directives
+          </a>
+        </div>
+        <div>
+          <h5>Community</h5>
+          <a className="github-button"
+             href={config.repoUrl}
+             data-count-href={`${config.repoUrl}/stargazers`}
+             data-show-count="true"
+             data-count-aria-label="# stargazers on GitHub"
+             aria-label="Star this project on GitHub"
+          >
+            {config.projectName}
+          </a>
+          <a
+            href="https://join.slack.com/t/lighthouse-php/shared_invite/enQtMzc1NzQwNTUxMjk3LWI1ZDQ1YWM1NmM2MmQ0NTU0NGNjZWFkMTJhY2VjMDAwZmMyZDFlZTc1Mjc3ZGY0MWM1Y2Q5MWNjYmJmYWJkYmU"
+            target="_blank">
+            <img src="https://img.shields.io/badge/slack-join-orange.svg" />
+          </a>
+        </div>
+      </section>
+      <section className="copyright">{config.copyright}</section>
+    </footer>
+  )
 }
 
-module.exports = Footer;
+module.exports = Footer
