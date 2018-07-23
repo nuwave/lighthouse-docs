@@ -52,7 +52,7 @@ Ligthouse includes a DateTime scalar type. This scalar type can be used to handl
 You can use it inside your schema like this:
 
 ```graphql
-scalar DateTime @scalar(class: "App\\GraphQL\\Scalars\\DateTime")
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
 type User {
   id: ID!
