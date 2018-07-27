@@ -1,14 +1,18 @@
 ---
-id: schema
-title: Schema
+id: types
+title: Types
 ---
-**TODO: (Discuss overview of GraphQL Schema)**
 
-In order for GraphQL to register your types/mutations/queries, we must create a schema file.
+A GraphQL schema is made out of types. This section describes the different set of types
+and how they can be defined to work with Lighthouse. For a more in-depth reference about types,
+look into the [GraphQL documentation](https://graphql.org/learn/schema/)
+
+<br/>
 
 ## Object Types
 
-Object Types are the primary building blocks of a GraphQL schema. They describe the types of objects available from your API and which fields that can be queried. In terms of Laravel, they will likely represent most of your Eloquent models.
+Object types define the resources of your API and are closely related to Eloquent models.
+They must have a unique name and have a set of fields.
 
 ```graphql
 type User {
@@ -20,32 +24,20 @@ type User {
 }
 ```
 
-### Queries
+## Scalar
 
-Every GraphQL schema should have a `Query` type which serves as an "entry point" and allows clients to query the data in your API.
+Scalar types are the most basic elements of a GraphQL schema. There are a
+few built in scalars, such as `String` or `Int`. You can also define your own and
+use them in your schema.
 
 ```graphql
-type Query {
-  me: User
+scalar DateTime @scalar
+
+type User {
+  ...
+  created_at: DateTime!
+  updatedAt: DateTime
 }
-```
-
-### Mutations
-
-In order to change data such as creating/updating/deleting, a `Mutation` type should be added to your schema.
-
-```graphql
-type Mutation {
-  login(username: String!, password: String!): User
-}
-```
-
-## Scalar Types
-
-Scalar types are custom types that require a `directive` (which we'll learn about later) to serialize, deserialize and validate values.
-
-```graphql
-scalar DateTime @scalar(class: "DateTimeScalar")
 ```
 
 ## Enum Types

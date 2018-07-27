@@ -4,34 +4,24 @@ title: Installation
 original_id: installation
 ---
 
-First, you need to include the Lighthouse package in your `composer.json` file.
-
-```json
-"require": {
-    // ...
-    "nuwave/lighthouse": "2.0.*"
-}
-```
-
-Or you can use Composer's `require` command from your terminal
+Install the package via composer
 
 ```bash
-$ composer require nuwave/lighthouse
+$ composer require nuwave/lighthouse "^2.0"
 ```
 
-Lighthouse has auto-discovery, but you could also add the Service Provider to your `config/app.php` file
+If you are using Laravel < 5.4, add the service provider to your `config/app.php`
 
 ```php
 'providers' => [
     // ...
-    /*
-     * Package Service Providers...
-     */
     Nuwave\Lighthouse\Providers\LighthouseServiceProvider::class,
 ]
 ```
 
-Add the GraphQL facade to your `config/app.php` file
+## Using the Facade
+
+If you want to use the GraphQL facade, add it to your `config/app.php` file
 
 ```php
 'aliases' => [
@@ -39,8 +29,3 @@ Add the GraphQL facade to your `config/app.php` file
     'GraphQL' => Nuwave\Lighthouse\Support\Facades\GraphQLFacade::class,
 ]
 ```
-
-Publish the package configuration
-
-```bash
-$ php artisan vendor:publish --provider="Nuwave\Lighthouse\Providers\LighthouseServiceProvider"

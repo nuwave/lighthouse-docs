@@ -12,4 +12,4 @@ services:
       - 80:3000
     volumes:
       - ./:/home/node/app
-    command: sh -c "yarn && yarn run start"
+    command: sh -c "yarn && yarn start"

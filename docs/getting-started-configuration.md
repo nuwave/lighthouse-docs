@@ -3,6 +3,13 @@ id: configuration
 title: Configuration
 ---
 
+Lighthouse comes with sensible configuration defaults and works right out of the box.
+Should you feel the need to change your configuration, you need to publish the configuration file first.
+
+```bash
+$ php artisan vendor:publish --provider="Nuwave\Lighthouse\Providers\LighthouseServiceProvider"
+```
+
 ## Directive Registry
 
 Lighthouse makes heavy use of server-side directives. With this setting, you can point Lighthouse to your own custom directives folder. Any classes defined here will be automatically be included when parsing the schema file(s).
