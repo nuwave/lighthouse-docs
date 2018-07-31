@@ -48,10 +48,6 @@ type Mutation {
 
 Scalar types are custom types that require a `directive` (which we'll learn about later) to serialize, deserialize and validate values.
 
-```graphql
-scalar DateTime @scalar(class: "DateTimeScalar")
-```
-
 ## Enum Types
 
 Enums are custom scalars with a restricted set of values (similar to `enum` found in database migrations). Enums also require a `directive` which we will cover later.
