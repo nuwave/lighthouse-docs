@@ -399,6 +399,32 @@ type User {
 }
 ```
 
+## @rules
+
+Validate an argument using [Laravel's built-in validation rules](https://laravel.com/docs/5.6/validation#available-validation-rules).
+Can be defined on Field Arguments and Input Object Values.
+
+```graphql
+type Query {
+  users(
+    countryCode: String @rules(apply: ["string", "size:2"])
+  ): User
+}
+
+input CreatePostInput {
+  title: String @rules(apply: ["required"])
+  content: String @rules(apply: ["min:50", "max:150"])
+}
+```
+
+You can customize the error message for a particular argument.
+
+```graphql
+@create(apply: ["max:140"], message: "Tweets have a limit of 140 characters")
+```
+
+To use a completely custom validator, use the [@validate](#@validate) directive.
+
 ## @scalar
 
 Point Lighthouse to your scalar definition class. [Read More](http://webonyx.github.io/graphql-php/type-system/scalar-types/)
@@ -454,16 +480,20 @@ union Person @union(resolver: "App\\GraphQL\\UnionResolver@person") =
 
 ## @validate
 
-Validate the input of a field by setting an array of [Laravel validation rules](https://laravel.com/docs/5.6/validation#available-validation-rules)
+Use a custom validator class for validating the contents of a complete field.
+The validator class must extend `Nuwave\Lighthouse\Support\Validator\Validator`.
 
 ```graphql
 type Mutation {
-  createUser(
-    name: String @validate(rules: ["required", "min:4"])
-    email: String @validate(rules: ["required", "email", "unique:users,email"])
+  createUser @validate(validator: "App\\GraphQL\\Validators\\CreateUserValidator")(
+    name: String
+    email: String
   ): User
 }
 ```
+
+In most cases, it is sufficient to define inline rules directly on your arguments,
+use the [@rules](#rules) directive.
 
 ## @where
 
