@@ -2,10 +2,12 @@
 id: schema
 title: Defining your Schema
 ---
-<br />
+
 A schema defines the capabilities of a GraphQL server.
 Much like a database schema, it describes the structure and the types your API can return.
-<br /><br />
+Lighthouse provides a default schema
+
+<br />
 
 ## Types
 
@@ -22,7 +24,7 @@ type User {
 }
 ```
 
-### Queries
+## Queries
 
 Every GraphQL schema must have a `Query` type which contains the queries your API offers.
 Think of queries as REST resources which can take arguments and return a fixed result.
@@ -35,7 +37,7 @@ type Query {
 }
 ```
 
-### Mutations
+## Mutations
 
 There is another special type called `Mutation`.
 It works similar to the `Query` type, but it exposes operations that are

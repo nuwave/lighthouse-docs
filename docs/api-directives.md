@@ -97,15 +97,17 @@ class PostPolicy
 Place on fields to perform analysis to calculate a query complexity score before execution. [Read More](http://webonyx.github.io/graphql-php/security/#query-complexity-analysis)
 
 ```graphql
-type User {
-  posts: [Post!]! @complexity @hasMany
+type Query {
+  posts: [Post!]! @complexity
 }
+```
 
-# if you would like to calculate complexity w/ your own function:
-type User {
+You can provide your own function to calculate complexity.
+
+```graphql
+type Query {
   posts: [Post!]!
     @complexity(resolver: "App\\Security\\ComplexityAnalyzer@userPosts")
-    @hasMany
 }
 ```
 
@@ -137,6 +139,14 @@ Specify a custom resolver function for a single field.
 You can either pass in seperate arguments for `class` and `method`, or add both in
 a single argument `resolver` and seperate them with an `@` symbol.
 
+
+```graphql
+type Mutation {
+  createPost(title: String!): Post
+    @field(class: "App\\Http\\GraphQL\\Mutations\\PostMutator", method: "create")
+}
+```
+
 Be aware you can this this to resolve any kind of field, so you may also use this to
 transform scalars.
 
@@ -145,18 +155,11 @@ type User {
   created_at: String!
     @field(resolver: "App\\Http\\GraphQL\\Types\\UserType@created_at")
 }
-
-type Mutation {
-  createPost(title: String!): Post
-    @field(class: "App\\Http\\GraphQL\\Mutations\\PostMutator", method: "create")
-}
 ```
 
 ## @find
 
 Find a model based on the arguments provided.
-
-_Note: You should provide unique fields to search by, if more than one model is returned an error will be thrown._
 
 ```graphql
 type Query {
@@ -164,16 +167,20 @@ type Query {
 }
 ```
 
+This throws when more then one result is returned.
+Use [@first](#first) if you can not ensure that.
+
 ## @first
 
-The `@first` directive is similar to `@find`, however,
-if more than one model is found it will return the first item rather than throwing an error.
+Get the first query result from a collection of Eloquent models.
 
 ```graphql
 type Query {
   userByFirstName(first_name: String!): User @first(model: "App\\User")
 }
 ```
+
+Other then [@find](#find), this will not throw an error if more then one items are in the collection.
 
 ## @enum
 
@@ -243,9 +250,6 @@ type Mutation @group(middleware: ["api:auth"]) {
 ## @hasMany
 
 Corresponds to Eloquent's HasMany-Relationship.
-
-
- 
 
 ```graphql
 type User {
@@ -322,8 +326,15 @@ class Commentable
 }
 ```
 
-        return null;
-    }
+## @method
+
+Call a method on the target model.
+This comes in handy if the data is not accessible as an attribute (e.g. `$model->myData`)
+but rather via a method like `$model->myData()`. It requires the `name` argument.
+
+```graphql
+type User {
+  mySpecialData: String! @method(name: "findMySpecialData")
 }
 ```
 
