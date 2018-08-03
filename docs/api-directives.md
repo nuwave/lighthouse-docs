@@ -5,22 +5,11 @@ title: Directives
 
 ## @auth
 
-Provides the currently authenticated user. This comes in handy on the root query. For example:
+Return the currently authenticated user as the result of a query.
 
 ```graphql
 type Query {
   me: User @auth
-}
-```
-
-Sending the following query will return the authenticated user, or if the request is not authenticated null will be returned.
-
-```graphql
-query Me {
-  me {
-    name
-    email
-  }
 }
 ```
 
@@ -81,14 +70,25 @@ class UserMutator
 
 ## @can
 
-Check a Laravel Policy to ensure the user is authorized to perform an action on a certain field.
+Check a Laravel Policy to ensure the current user is authorized to access a field.
+Set the name of the policy and the model to check against.
 
 ```graphql
 type Mutation {
-  createUser(input: UserInput): User
-    # This will check if the authenticated user has the `create` policy on the `App\User` model,
-    # if not, an authorization error will be thrown.
-    @can(if: "create", model: "App\\User")
+  createPost(input: PostInput): Post @can(if: "create", model: "App\\Post")
+}
+```
+
+This is currently limited to doing [general checks on a resource and not a specific instance](https://laravel.com/docs/5.6/authorization#methods-without-models).
+The defined functions receive the currently authenticated user.
+
+```php
+class PostPolicy
+{
+    public function create(User $user): bool
+    {
+        return $user->is_admin;
+    }
 }
 ```
 
