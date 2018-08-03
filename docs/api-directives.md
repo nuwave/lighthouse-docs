@@ -220,6 +220,26 @@ type Mutation {
 }
 ```
 
+## @group
+
+Apply common settings to all fields of an Object Type.
+
+Simplify field directive definitions by defining a common namespace.
+
+```graphql
+extend type Query @group(namespace: "App\\Models") {
+  activeUsers @field(resolver: "User@getActiveUsers")
+}
+```
+
+Set common middleware on a set of Queries/Mutations.
+
+```graphql
+type Mutation @group(middleware: ["api:auth"]) {
+  createPost(title: String!): Post
+}
+```
+
 ## @hasMany
 
 Corresponds to Eloquent's HasMany-Relationship.
