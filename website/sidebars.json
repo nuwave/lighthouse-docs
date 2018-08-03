@@ -10,7 +10,9 @@
     ],
     "Guides": [
       "schema-organisation",
-      "relay"
+      "relay",
+      "auth",
+      "validation"
     ],
     "API Reference": [
       "directives"
