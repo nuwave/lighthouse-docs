@@ -22,6 +22,11 @@ type User {
   created_at: String!
   updated_at: String
 }
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+}
 ```
 
 ## Scalar
@@ -36,51 +41,150 @@ scalar DateTime @scalar
 type User {
   ...
   created_at: DateTime!
-  updatedAt: DateTime
+  updated_at: DateTime
 }
 ```
 
+To register scalars with Lighthouse, you need to define them in your schema and
+use the [@scalar](directives#scalar) directive to point to an implementing class.
+[Learn how to implement your own scalar.](http://webonyx.github.io/graphql-php/type-system/scalar-types/)
+
 ## Enum Types
 
-Enums are custom scalars with a restricted set of values (similar to `enum` found in database migrations). Enums also require a `directive` which we will cover later.
+Enums are types with a restricted set of values (similar to `enum` found in database migrations).
+They are defined as a list of `UPPERCASE` string keys. You can define the actual values through
+the [@enum](directives#enum) directive.
+
 
 ```graphql
-enum Status {
-  INTERN @enum(value: "intern")
-  EMPLOYEE @enum(value: "employee")
-  TERMINATED @enum(value: "terminated")
+enum EmploymentStatus {
+  INTERN @enum(value: 0)
+  EMPLOYEE @enum(value: 1)
+  TERMINATED @enum(value: 2)
+}
+```
+
+Now we can use the enum as part of our schema.
+
+```graphql
+type Employee {
+  id: ID!
+  name: String
+  status: EmploymentStatus!
+}
+
+type Query {
+  employees: [Employee!]! @all
+}
+```
+
+In this example, the underlying values are actually integers. When the models are retrieved from
+the database, the mapping is applied and the integers are converted to the defined string keys.
+
+Queries now return meaningful names instead of magic numbers.
+
+```graphql
+{
+  employees {
+    name
+    status
+  }
+}
+```
+
+
+```json
+{
+  "data": {
+    "employees": [
+      {"name": "Hans", "status": "INTERN"},
+      {"name": "Pamela", "status": "EMPLOYEE"},
+      {"name": "Gerhard", "status": "FIRED"}
+    ]
+  }
 }
 ```
 
 ## Input Types
 
 Input types can be used to describe complex objects for for field arguments.
+Beware that while they look similar to Object Types, they behave differently:
+The fields of an Input Type are treated similar to arguments.
 
 ```graphql
 input CreateUserInput {
   name: String!
-  email: String!
-  password: String!
-  password_confirmation: String!
+  email: String
 }
+
+type User {
+  id: ID!
+  name: String!
+  email: String
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User
+} 
 ```
 
 ## Interface Types
 
-A GraphQL `interface` is similar to a PHP `interface`. It's an abstract type which describes the fields which must be included.
+The GraphQL `interface` type is similar to a PHP `Interface`.
+It defines a set of common fields that all implementing types must also provide.
+A common use-case for interfaces with a Laravel project would be polymorphic relationships.
 
 ```graphql
-interface Model {
-  id: ID!
-  created_at: String!
-  updated_at: String!
+interface Named @interface(resolver: "App\\GraphQL\\Interfaces\\Named@resolveType"){
+  name: String!
 }
 ```
 
-## Union Types
-
-Union types are almost identical to `Interfaces` except you don't define `fields` on them. They require `directives` which we will discuss later.
+Object types can implement that interface, given that they provide all its fields.
 
 ```graphql
-union Person @union(resolver: "PersonUnion") = User | Employee
+type User implements Named {
+  id: ID!
+  name: String!
+}
 ```
+
+The following definition would be invalid.
+
+```graphql
+type User implements Named {
+  id: ID!
+}
+```
+
+Interfaces need a way of determining which concrete Object Type is returned by a
+particular query. Use the [@interface](directives#interface) directive to return a concrete implementation.
+
+Read more about them in the [GraphQL Reference](https://graphql.org/learn/schema/#interfaces) and the
+[docs for graphql-php](http://webonyx.github.io/graphql-php/type-system/interfaces/)
+
+## Union Types
+
+A Union is an abstract type that simply enumerates other Object Types.
+They are similar to interfaces in that they can return different types, but they can not
+have fields defined.
+
+```graphql
+union Person @union(resolver: "App\\GraphQL\\UnionResolver@person") =
+    User
+  | Employee
+
+type User {
+  id: ID!
+}
+
+type Employee {
+  employeeId: ID!
+}
+```
+
+Unions need a way of determining which concrete Object Type is returned by a
+particular query. Use the [@union](directives#union) directive to return a concrete implementation.
+
+Read more about them in the [GraphQL Reference](https://graphql.org/learn/schema/#union-types) and the
+[docs for graphql-php](http://webonyx.github.io/graphql-php/type-system/unions/)
