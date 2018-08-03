@@ -177,12 +177,13 @@ type Query {
 
 ## @enum
 
-Define the value used to represent a GraphQL enum type.
+Map the underlying value to an enum key. When dealing with the Enum type in your code,
+you will recieve the defined value instead of the string key.
 
 ```graphql
 enum Role {
-  ADMIN @enum(value: "admin")
-  EMPLOYEE @enum(value: "employee")
+  ADMIN @enum(value: 1)
+  EMPLOYEE @enum(value: 2)
 }
 ```
 
@@ -275,46 +276,31 @@ type Mutation {
 
 ## @interface
 
-Define Interfaces in your schema. It requires a `resolver` argument so Lighthouse knows how to resolve the interface.
-
-_A common use-case for interfaces with a Laravel project would be polymorphic relationships._
+Define interface types in your schema.
+Set the `resolver` argument to a function that returns the implementing Object Type.
 
 ```graphql
-interface Commentable
-  @interface(
-    resolver: "App\\Http\\GraphQL\\Interfaces\\Commentable@resolveType"
-  ) {
+interface Commentable @interface(resolver: "App\\GraphQL\\Interfaces\\Commentable@resolveType") {
   id: ID!
-}
-
-type Post implements Commentable {
-  id: ID!
-  # ...
-}
-
-type Video implements Commentable {
-  id: ID!
-  # ...
-}
-
-type Comment {
-  # ...
-
-  # resolves to either a Video or Post type
-  commentable: Commentable
 }
 ```
+
+The function receives the value of the parent field as its single argument and must
+return an Object Type. Get the appropriate Object Type from Lighthouse's type registry.
 
 ```php
 class Commentable
 {
-    public function resolveType($value)
+    public function resolveType($value): \GraphQL\Type\Definition\ObjectType
     {
         if ($value instanceof \App\Post) {
-            return schema()->instance('Post');
+            return graphql()->types()->get('Post');
         } else if ($value instanceof \App\Video) {
-          return schema()->instance('Video');
+            return graphql()->types()->get('Video');
         }
+    }
+}
+```
 
         return null;
     }
@@ -401,7 +387,21 @@ type User {
 
 ## @scalar
 
-Point Lighthouse to your scalar definition class. [Read More](http://webonyx.github.io/graphql-php/type-system/scalar-types/)
+Point Lighthouse to your scalar definition class.
+[Learn how to implement your own scalar.](http://webonyx.github.io/graphql-php/type-system/scalar-types/)
+
+```graphql
+scalar DateTime @scalar
+```
+
+Pass the class name if it is different from the scalar type.
+
+```graphql
+scalar DateTime @scalar(class: "DateTimeScalar")
+```
+
+Lighthouse looks for scalar classes in the default namespace defined in the configuration.
+You may override that by passing a fully qualified class name.
 
 ```graphql
 scalar DateTime @scalar(class: "App\\GraphQL\\Scalars\\DateTimeScalar")
@@ -444,12 +444,31 @@ Point Lighthouse to the function used to determine which implementation a value 
 type User {
   id: ID!
 }
+
 type Employee {
   employeeId: ID!
 }
+
 union Person @union(resolver: "App\\GraphQL\\UnionResolver@person") =
     User
   | Employee
+```
+
+The function receives the value of the parent field as its single argument and must
+return an Object Type. Get the appropriate Object Type from Lighthouse's type registry.
+
+```php
+class UnionResolver
+{
+    public function person($value): \GraphQL\Type\Definition\ObjectType
+    {
+        if ($value instanceof \App\User) {
+            return graphql()->types()->get('User');
+        } else if ($value instanceof \App\Employee) {
+            return graphql()->types()->get('Employee');
+        }
+    }
+}
 ```
 
 ## @validate
