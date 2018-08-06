@@ -440,7 +440,7 @@ You can customize the error message for a particular argument.
 @create(apply: ["max:140"], message: "Tweets have a limit of 140 characters")
 ```
 
-To use a completely custom validator, use the [@validate](#@validate) directive.
+To use a completely custom validator, use the [@validate](#validate) directive.
 
 ## @scalar
 
