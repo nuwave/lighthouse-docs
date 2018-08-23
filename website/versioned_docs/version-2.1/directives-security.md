@@ -83,7 +83,7 @@ The `@group` directive can be handy when you want to place middleware on a set o
 
 ```graphql
 # the "auth:api" middleware will be run on all fields
-type Query @middleware(checks: ["auth:api"]) {
+type Query @group(middleware: ["auth:api"]) {
   users: [User]
   posts: [Post]
 }
