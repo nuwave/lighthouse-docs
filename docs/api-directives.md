@@ -464,16 +464,6 @@ You may override that by passing a fully qualified class name.
 scalar DateTime @scalar(class: "App\\GraphQL\\Scalars\\DateTimeScalar")
 ```
 
-## @security
-
-Set [security rules](http://webonyx.github.io/graphql-php/security/). Must be used on the `Query` type.
-
-```graphql
-type Query @security(depth: 4, complexity: 100, introspection: false) {
-  #...
-}
-```
-
 ## @update
 
 Update an Eloquent model.
