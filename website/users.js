@@ -12,6 +12,11 @@ const users = [
     image: imgBase + 'mll.svg',
     infoLink: 'https://mll.com/',
   },
+  {
+    caption: 'Traimmu',
+    image: imgBase + 'traimmu.jpg',
+    infoLink: 'https://www.traimmu.com',
+  },
 ]
 
 module.exports = users

@@ -16,7 +16,7 @@ const Users = props => {
   if ((siteConfig.users || []).length === 0) {
     return null
   }
-  const editUrl = siteConfig.repoUrl + '/edit/master/website/users.js'
+  const editUrl = siteConfig.editUrl + '../website/users.js'
   const showcase = siteConfig.users.map((user, i) => {
     return (
       <a href={user.infoLink} key={i}>
@@ -24,7 +24,7 @@ const Users = props => {
       </a>
     )
   })
-  
+
   return (
     <div className="mainContainer">
       <Container padding={['bottom', 'top']}>
@@ -32,11 +32,11 @@ const Users = props => {
           <div className="prose">
             <h1>Who's Using This?</h1>
           </div>
-          
+
           <div className="logos">
             {showcase}
           </div>
-          
+
           <p>Are you using this project?</p>
           <a href={editUrl} className="button mt-4">
             Add your company
