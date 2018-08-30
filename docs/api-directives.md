@@ -249,7 +249,7 @@ type Mutation @group(middleware: ["api:auth"]) {
 
 ## @hasMany
 
-Corresponds to Eloquent's HasMany-Relationship.
+Corresponds to [Eloquent's HasMany-Relationship](https://laravel.com/docs/eloquent-relationships#one-to-many).
 
 ```graphql
 type User {
@@ -272,6 +272,25 @@ you can override it by setting `relation`.
 ```graphql
 type User {
   posts: [Post!]! @hasMany(relation: "articles")
+}
+```
+
+## @hasOne
+
+Corresponds to [Eloquent's HasOne-Relationship](https://laravel.com/docs/eloquent-relationships#one-to-one).
+
+```graphql
+type User {
+  phone: Phone @hasOne
+}
+```
+
+If the name of the relationship on the Eloquent model is different than the field name,
+you can override it by setting `relation`.
+
+```graphql
+type User {
+  phone: Phone @hasOne(relation: "telephone")
 }
 ```
 
