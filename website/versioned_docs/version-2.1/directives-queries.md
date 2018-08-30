@@ -33,7 +33,7 @@ type User {
 
 ## @neq
 
-The `@eq` directive can be used to place a not equals operator on a eloquent query.
+The `@neq` directive can be used to place a not equals operator on a eloquent query.
 
 ```graphql
 type User {
