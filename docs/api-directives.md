@@ -163,7 +163,7 @@ Find a model based on the arguments provided.
 
 ```graphql
 type Query {
-  userById(id: ID!): User @find(model: "App\\User")
+  userById(id: ID! @eq): User @find(model: "App\\User")
 }
 ```
 
@@ -176,7 +176,7 @@ Get the first query result from a collection of Eloquent models.
 
 ```graphql
 type Query {
-  userByFirstName(first_name: String!): User @first(model: "App\\User")
+  userByFirstName(first_name: String! @eq): User @first(model: "App\\User")
 }
 ```
 
