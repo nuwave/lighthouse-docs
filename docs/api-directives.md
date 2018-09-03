@@ -25,19 +25,30 @@ type Query {
 
 ## @belongsTo
 
-Eager loads the eloquent relationship so it should only be used on a type that resolved to an Eloquent model. The `@belongsTo` directive accepts a `relation` argument if your relationship has a different name than the field. For example, let's assume we have the following models:
+Resolves field through the Eloquent `BelongsTo` relationship. It assumes both the field and the relationship method to have the same name.
+
+```graphql
+type Post {
+  author: User @belongsTo
+}
+```
 
 ```php
-class User extends Model {
-  // ...
+class Post extends Model 
+{
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
+```
 
-class Post extends Model {
-  // ...
-  public function author()
-  {
-      return $this->belongsTo(User::class);
-  }
+The directive accepts an optional `relation` argument if your relationship method
+has a different name than the field.
+
+```graphql
+type Post {
+  user: User @belongsTo(relation: "author")
 }
 ```
 
