@@ -34,7 +34,7 @@ const Versions = props => {
             <tr>
               <th>{latestVersion}</th>
               <td>
-                <a href={`${siteConfig.baseUrl}docs/getting-started/installation`}>Documentation</a>
+                <a href={`${siteConfig.baseUrl}docs/installation`}>Documentation</a>
               </td>
               <td>
                 <a href={releasesBaseUrl + latestVersion}>Release Notes</a>
