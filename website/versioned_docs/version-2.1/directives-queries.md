@@ -120,7 +120,7 @@ _Note: You should provide unique fields to search by, if more than one model is 
 
 ```graphql
 type Query {
-  userById(id: ID!): User @find(model: "App\\User")
+  userById(id: ID! @eq): User @find(model: "App\\User")
 }
 ```
 
@@ -130,6 +130,6 @@ The `@first` directive is similar to `@find`, however, if more than one model is
 
 ```graphql
 type Query {
-  userByFirstName(first_name: String!): User @first(model: "App\\User")
+  userByFirstName(first_name: String! @eq): User @first(model: "App\\User")
 }
 ```
