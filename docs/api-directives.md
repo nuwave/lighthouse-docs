@@ -392,12 +392,35 @@ type User {
 
 ## @node
 
-Store a type's resolver functions in Lighthouse's node registry. The `@node` directive requires the `resolver` argument which will be passed the id so you can resolve the type (whether it be from your DB or a third-party service's REST API).
+Store a type's resolver functions in Lighthouse's node registry.
+The `resolver` argument has to specify a function which will be passed the
+decoded `id` and resolves to a result.
 
 ```graphql
 type User @node(resolver: "App\\GraphQL\\NodeResolver@resolveUser") {
   name: String!
 }
+```
+
+```php
+public function resolveUser(string $id): \App\User
+```
+
+The `typeResolver` is responsible for determining the GraphQL type the result
+belongs to. Lighthouse provides a default implementation, but you can override
+it if the need arises.
+
+```grapqhl
+type User @node(
+  resolver: "App\\GraphQL\\NodeResolver@resolveUser"
+  typeResolver: "App\\GraphQL\\NodeResolver@resolveNodeType"
+  ) {
+  name: String!
+}
+```
+
+```php
+public function resolveNodeType($value): \GraphQL\Type\Definition\Type
 ```
 
 ## @notIn
