@@ -6,7 +6,8 @@
     ],
     "The Basics": [
       "schema",
-      "types"
+      "types",
+      "resolvers"
     ],
     "Guides": [
       "schema-organisation",

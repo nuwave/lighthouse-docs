@@ -5,6 +5,7 @@
     "previous": "Previous",
     "tagline": "GraphQL Server for Laravel",
     "directives": "Directives",
+    "resolvers": "Resolvers",
     "schema": "Defining your Schema",
     "types": "Types",
     "configuration": "Configuration",
