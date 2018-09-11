@@ -1,5 +1,5 @@
 ---
-id: version-2.0-configuration
+id: version-2.1-configuration
 title: Configuration
 original_id: configuration
 ---
@@ -19,12 +19,33 @@ The following configuration will be placed in `config/lighthouse.php`.
 return [
     /*
     |--------------------------------------------------------------------------
+    | LightHouse endpoint & middleware
+    |--------------------------------------------------------------------------
+    |
+    | Setup this values as required,
+    | default route endpoints is yourdomain.com/graphql
+    | get requests to your graphql endpoint are disabled by default, you may enable them below
+    | setup middleware here for all request,
+    | setup more endpoints, ej: pointing to the controller value inside your route file
+    |
+    */
+    'route_name' => 'graphql',
+
+    'route_enable_get' => false,
+
+    'route' => [
+        'prefix' => '',
+        // 'middleware' => ['web','api'],    // [ 'loghttp']
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Directive registry
     |--------------------------------------------------------------------------
     |
-    | This package allows you to create your own server-side directives. Change
-    | these values to register the directory that will hold all of your
-    | custom directives.
+    | This package allows you to create your own server-side directives.
+    | List directories that will be scanned for custom directives.
+    | Hint: Directives must implement \Nuwave\Lighthouse\Schema\Directives\Directive
     |
     */
     'directives' => [__DIR__.'/../app/Http/GraphQL/Directives'],
@@ -61,10 +82,15 @@ return [
     | Schema Cache
     |--------------------------------------------------------------------------
     |
-    | Specify where the GraphQL schema should be cached.
+    | A large part of the Schema generation is parsing into an AST.
+    | This operation is pretty expensive so it is recommended to enable
+    | caching in production mode.
     |
     */
-    'cache' => null,
+    'cache' => [
+        'enable' => env('LIGHTHOUSE_CACHE_ENABLE', false),
+        'key' => env('LIGHTHOUSE_CACHE_KEY', 'lighthouse-schema'),
+    ],
 
     /*
     |--------------------------------------------------------------------------
