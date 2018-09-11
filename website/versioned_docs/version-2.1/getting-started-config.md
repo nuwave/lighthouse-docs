@@ -1,5 +1,5 @@
 ---
-id: version-2.0-configuration
+id: version-2.1-configuration
 title: Configuration
 original_id: configuration
 ---
