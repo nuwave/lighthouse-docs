@@ -15,17 +15,28 @@ type Query {
 
 ## @all
 
-Fetch all Eloquent models for a field.
+Fetch all Eloquent models and return the collection as the result for a field.
 
 ```graphql
 type Query {
-  users: [User] @all
+  users: [User!]! @all
+}
+```
+
+This assumes your model has the same name as the type you are returning and is defined
+in the default model namespace `App\Models`. [You can change this configuration](configuration). 
+
+If you need to use a different model for a single field, you can pass a class name as the `model` argument.
+
+```graphql
+type Query {
+  posts: [Post!]! @all(model: "App\\Blog\\BlogEntry")
 }
 ```
 
 ## @belongsTo
 
-Resolves field through the Eloquent `BelongsTo` relationship. It assumes both the field and the relationship method to have the same name.
+Resolves a field through the Eloquent `BelongsTo` relationship. It assumes both the field and the relationship method to have the same name.
 
 ```graphql
 type Post {
@@ -147,14 +158,13 @@ type Mutation {
 ## @field
 
 Specify a custom resolver function for a single field.
-You can either pass in seperate arguments for `class` and `method`, or add both in
-a single argument `resolver` and seperate them with an `@` symbol.
+Pass a class and a method to the `resolver` argument and seperate them with an `@` symbol.
 
 
 ```graphql
 type Mutation {
   createPost(title: String!): Post
-    @field(class: "App\\Http\\GraphQL\\Mutations\\PostMutator", method: "create")
+    @field(resolver: "App\\Http\\GraphQL\\Mutations\\PostMutator@create")
 }
 ```
 
