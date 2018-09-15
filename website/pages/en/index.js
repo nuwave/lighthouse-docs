@@ -116,9 +116,6 @@ type Query {
               Directives to get you up and running in no time. But it also
               allows you to create your own when needed.
             </p>
-            <a href="#" className="font-bold uppercase text-sm">
-              Read More
-            </a>
           </div>
           <div className="w-full mb-4 md:w-1/3 md:mb-0 px-4">
             <h4 className="font-serif text-purple-darkest text-xl mb-2">
@@ -129,9 +126,6 @@ type Query {
               the need to re-write your entire domain. Just build a GraphQL
               schema on top of your current logic and start querying!
             </p>
-            <a href="#" className="font-bold uppercase text-sm">
-              Read More
-            </a>
           </div>
           <div className="w-full md:w-1/3 md:mb-0 px-4">
             <h4 className="font-serif text-purple-darkest text-xl mb-2">
@@ -141,9 +135,6 @@ type Query {
               Eloquent is an extremely powerful ORM. Lighthouse leverages
               your current model relationships and creates optimized database queries.
             </p>
-            <a href="#" className="font-bold uppercase text-sm">
-              Read More
-            </a>
           </div>
         </div>
       </div>
