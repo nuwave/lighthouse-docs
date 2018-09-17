@@ -1,6 +1,7 @@
 ---
-id: directives
+id: version-2.2-directives
 title: Directives
+original_id: directives
 ---
 
 ## @auth

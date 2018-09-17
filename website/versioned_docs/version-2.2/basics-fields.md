@@ -1,6 +1,7 @@
 ---
-id: resolvers
-title: Resolvers
+id: version-2.2-fields
+title: Fields
+original_id: fields
 ---
 
 To fetch data from your GraphQL endpoint, you need to define resolvers for your fields.
@@ -16,16 +17,17 @@ The most basic form of defining a resolver is to use the [@field](directives#fie
 
 ```graphql
 type Query {
-  hello: String! @field(resolver: "App\\GraphQL\\Hello@resolve") 
+  hello: String! 
 }
 ```
 
-You need to implement the actual resolver in the class that was specified.
+You need to implement the actual resolver next. Lighthouse looks for a class with the capitalized name of the
+field in `App\Http\GraphQL\Queries` and calls its `resolve` function.
 
 ```php
 <?php
 
-namespace App\GraphQL;
+namespace App\Http\GraphQL\Queries;
 
 class Hello
 {
@@ -256,4 +258,4 @@ This mutation will return the deleted object, so you will have a last chance to 
     }
   }
 }
-```
+``` 

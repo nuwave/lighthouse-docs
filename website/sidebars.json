@@ -7,16 +7,18 @@
     "The Basics": [
       "schema",
       "types",
-      "resolvers"
+      "fields"
     ],
     "Guides": [
       "schema-organisation",
       "relay",
       "auth",
-      "validation"
+      "validation",
+      "relationships"
     ],
     "API Reference": [
-      "directives"
+      "directives",
+      "resolvers"
     ]
   }
 }
