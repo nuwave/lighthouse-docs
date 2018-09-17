@@ -133,14 +133,17 @@ type Mutation {
 
 ## @globalId
 
-The `@globalId` directive converts a globalId field back to it's original id. This can be useful for mutations that accept a global id, but you need the original id to query the database.
+Converts an ID to a global ID.
 
 ```graphql
-type Mutation {
-  # In your resolver the $args['id'] will be the original id of the post
-  updatePost(id: ID! @globalId, title: String): Post
+type User {
+  id: ID! @globalId
+  name: String
 }
 ```
+
+Instead of the original ID, the `id` field will now return a base64-encoded String that globally identifies the User and can be used
+for querying the `node` endpoint.
 
 ## @hasMany
 
