@@ -1,6 +1,7 @@
 ---
-id: configuration
+id: version-2.2-configuration
 title: Configuration
+original_id: configuration
 ---
 
 Lighthouse comes with sensible configuration defaults and works right out of the box.
@@ -15,7 +16,6 @@ The following configuration will be placed in `config/lighthouse.php`.
 ```php
 <?php
 
-use GraphQL\Error\Debug;
 use GraphQL\Validator\Rules\DisableIntrospection;
 
 return [
@@ -108,8 +108,6 @@ return [
         'mutations' => 'App\\Http\\GraphQL\\Mutations',
         'queries' => 'App\\Http\\GraphQL\\Queries',
         'scalars' => 'App\\Http\\GraphQL\\Scalars',
-        'unions' => 'App\\Http\\GraphQL\\Unions',
-        'interfaces' => 'App\\Http\\GraphQL\\Unions'
     ],
 
     /*
@@ -128,43 +126,6 @@ return [
         'disable_introspection' => DisableIntrospection::DISABLED,
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Debug
-    |--------------------------------------------------------------------------
-    |
-    | Control the debug level as described in http://webonyx.github.io/graphql-php/error-handling/
-    | Debugging is only applied if the global Laravel debug config is set to true.
-    |
-    */
-    'debug' => Debug::INCLUDE_DEBUG_MESSAGE | Debug::INCLUDE_TRACE,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Error Handlers
-    |--------------------------------------------------------------------------
-    |
-    | Register error handlers that receive the Errors that occur during execution and
-    | handle them. You may use this to log, filter or format the errors.
-    | The classes must implement Nuwave\Lighthouse\Execution\ErrorHandler
-    |
-    */
-    'error_handlers' => [
-        \Nuwave\Lighthouse\Execution\ExtensionErrorHandler::class,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Extensions
-    |--------------------------------------------------------------------------
-    |
-    | Register extension classes that extend \Nuwave\Lighthouse\Schema\Extensions\GraphQLExtension
-    |
-    */
-    'extensions' => [
-        #\Nuwave\Lighthouse\Schema\Extensions\TracingExtension::class
-    ],
-
      /*
      |--------------------------------------------------------------------------
      | GraphQL Controller
@@ -180,10 +141,10 @@ return [
     | Global ID
     |--------------------------------------------------------------------------
     |
-    | The name that is used for the global id field on the Node interface.
-    | When creating a Relay compliant server, this must be named "id".
+    | When creating a GraphQL type that is Relay compliant, provide a named field
+    | for the Node identifier.
     |
     */
-    'global_id_field' => 'id',
+    'global_id_field' => '_id',
 ];
 ```
