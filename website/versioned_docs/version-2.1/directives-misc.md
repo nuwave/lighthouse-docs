@@ -23,7 +23,7 @@ type Mutation {
 
 ## @rename
 
-The `@rename` directive can be used to rename on argument on the server side. This comes in handy if you want to use snake_case on the server side but camelCase on the client side. It requires the `attribute` argument
+The `@rename` directive can be used to rename a field on the server side. This comes in handy if you want to use snake_case on the server side but camelCase on the client side. It requires the `attribute` argument
 
 ```graphql
 type User {

@@ -494,7 +494,7 @@ type Query {
 
 ## @rename
 
-Rename an argument on the server side, e.g. convert from snake_case to camelCase.
+Rename a field on the server side, e.g. convert from snake_case to camelCase.
 
 ```graphql
 type User {
