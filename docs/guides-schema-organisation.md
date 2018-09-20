@@ -44,6 +44,21 @@ type User {
 
 The import statements are followed recursively, so it is easy to organize even the most complex of schemas.
 
+You can also import multiple files using a wildcard. For example, if you have your schema files like this:
+```
+graphql/
+  |-- schema.graphql
+  |-- post/
+    |-- post.graphql
+    |-- category.graphql
+```
+
+Instead of import each file, you can import multiple files that matches a pattern (it will be loaded using the php's [glob](http://php.net/manual/function.glob.php) function)
+
+```graphql
+#import post/*.graphql
+```
+
 <br/>
 
 ## Type Extensions
