@@ -457,15 +457,61 @@ type Query {
 
 ## @paginate
 
-Return a paginated list of Eloquent models. This transforms the schema definition and automatically adds additional arguments
-and types.
-
-The `type` of pagination can be `paginator` (default) or `connection` (for Relay).
+Return a paginated list. This transforms the schema definition and automatically adds
+additional arguments and inbetween types.
 
 ```graphql
 type Query {
-  posts: [Post] @paginate
-  postsRelay: [Post] @paginate(type: "connection")
+  posts: [Post!]! @paginate
+}
+```
+
+The `type` of pagination defaults to `paginator`, but may also be set to a Relay
+compliant `connection`.
+
+```graphql
+type Query {
+  posts: [Post!]! @paginate(type: "connection")
+}
+```
+
+By default, this looks for an Eloquent model in the configured default namespace, with the same
+name as the returned type. You can overwrite this by setting the `model` argument.
+
+```graphql
+type Query {
+  posts: [Post!]! @paginate(model: "App\\Blog\\BlogPost")
+}
+```
+
+If simply querying Eloquent does not fit your use-case, you can specify a custom `builder`.
+
+
+```graphql
+type Query {
+  posts: [Post!]! @paginate(builder: "App\\Blog@visiblePosts")
+}
+```
+
+Your method receives the typical resolver arguments and has to return an instance of `Illuminate\Database\Query\Builder`.
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Query\Builder;
+use GraphQL\Type\Definition\ResolveInfo;
+
+class Blog
+{
+    public function visiblePosts($root, array $args, $context, ResolveInfo $resolveInfo): Builder
+    {
+        return DB::table('posts')
+            ->where('visible', true)
+            ->where('posted_at', '>', $args['after']);
+    }
 }
 ```
 
