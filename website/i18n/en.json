@@ -12,6 +12,7 @@
     "configuration": "Configuration",
     "installation": "Installation",
     "auth": "Authentication & Authorization",
+    "plugin-development": "Plugin Development",
     "relationships": "Eloquent relationships",
     "relay": "Relay",
     "schema-organisation": "Organize your Schema",
