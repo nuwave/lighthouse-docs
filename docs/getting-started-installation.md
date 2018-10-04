@@ -9,15 +9,6 @@ title: Installation
 $ composer require nuwave/lighthouse
 ```
 
-If you are using Laravel < 5.4, add the service provider to your `config/app.php`
-
-```php
-'providers' => [
-    // ...
-    Nuwave\Lighthouse\Providers\LighthouseServiceProvider::class,
-]
-```
-
 ## Publish the default schema
 
 Lighthouse includes a default schema to get you going right away. Publish
