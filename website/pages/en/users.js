@@ -10,12 +10,12 @@ const React = require('react')
 const CompLibrary = require('../../core/CompLibrary.js')
 const Container = CompLibrary.Container
 
-const siteConfig = require(process.cwd() + '/siteConfig.js')
+const CWD = process.cwd()
 
-const Users = props => {
-  if ((siteConfig.users || []).length === 0) {
-    return null
-  }
+const siteConfig = require(CWD + '/siteConfig.js')
+const Button = require(CWD + '/core/Button.js')
+
+const Users = () => {
   const editUrl = siteConfig.editUrl + '../website/users.js'
   const showcase = siteConfig.users.map((user, i) => {
     return (
@@ -38,13 +38,15 @@ const Users = props => {
           </div>
 
           <p>Are you using this project?</p>
-          <a href={editUrl} className="button mt-4">
+          <Button href={editUrl}>
             Add your company
-          </a>
+          </Button>
         </div>
       </Container>
     </div>
   )
 }
+
+Users.title = 'Awesome Users'
 
 module.exports = Users

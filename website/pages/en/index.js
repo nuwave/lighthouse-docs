@@ -10,13 +10,11 @@ const React = require('react')
 const CompLibrary = require('../../core/CompLibrary.js')
 const MarkdownBlock = CompLibrary.MarkdownBlock
 
-const Button = props => (
-  <a href={props.href} className="button mt-8">
-    {props.children}
-  </a>
-)
+const CWD = process.cwd()
 
-const Index = props => (
+const Button = require(CWD + '/core/Button.js')
+
+const Index = () => (
   <div className="home-container">
     <section
       className="bg-purple-darkest bg-no-repeat bg-cover"

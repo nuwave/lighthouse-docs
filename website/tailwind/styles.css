@@ -1,10 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Miriam+Libre");
+
 @tailwind preflight;
 
 @tailwind components;
 
 @tailwind utilities;
-
-@import url("https://fonts.googleapis.com/css?family=Miriam+Libre");
 
 h1,
 h2,
@@ -140,7 +140,6 @@ nav.toc .toggleNav ul li a {
 /*
  * Homepage
  */
-
 pre {
   @apply .bg-purple-darkest !important;
 }
@@ -188,4 +187,3 @@ footer.nav-footer {
 footer .sitemap h5 {
   color: #fff !important;
 }
-

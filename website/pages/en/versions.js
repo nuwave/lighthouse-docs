@@ -9,14 +9,13 @@ const React = require('react')
 
 const CompLibrary = require('../../core/CompLibrary')
 const Container = CompLibrary.Container
-const GridBlock = CompLibrary.GridBlock
 
 const CWD = process.cwd()
 
 const siteConfig = require(CWD + '/siteConfig.js')
 const versions = require(CWD + '/versions.json')
 
-const Versions = props => {
+const Versions = () => {
   const latestVersion = versions[0]
   const releasesBaseUrl = `${siteConfig.repoUrl}/releases/tag/v`
   return (
@@ -91,5 +90,7 @@ const Versions = props => {
     </div>
   )
 }
+
+Versions.title = 'Awesome Versions'
 
 module.exports = Versions

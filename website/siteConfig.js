@@ -35,12 +35,12 @@ const siteConfig = {
       doc: 'installation',
     },
     {
-      label: 'Walkthrough',
-      href: 'https://youtu.be/y19EaW2X7ac',
+      label: 'Resources',
+      page: 'resources',
     },
     {
       label: 'Users',
-      page: 'users'
+      page: 'users',
     },
     {
       label: 'GitHub',
