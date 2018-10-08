@@ -30,7 +30,7 @@ type Query {
 ```
 
 Imports always begin on a seperate line with `#import `, followed by the relative path
-to the imported file. The contents of `user.graphql` are new pasted in the final schema.
+to the imported file. The contents of `user.graphql` are pasted in the final schema.
 
 ```graphql
 type Query {
@@ -44,7 +44,8 @@ type User {
 
 The import statements are followed recursively, so it is easy to organize even the most complex of schemas.
 
-You can also import multiple files using a wildcard. For example, if you have your schema files like this:
+You can also import multiple files using wildcard import syntax.
+For example, if you have your schema files like this:
 ```
 graphql/
   |-- schema.graphql
@@ -53,7 +54,8 @@ graphql/
     |-- category.graphql
 ```
 
-Instead of import each file, you can import multiple files that matches a pattern (it will be loaded using the php's [glob](http://php.net/manual/function.glob.php) function)
+Instead of naming each individual file, you can import multiple files that matches a pattern.
+It will be loaded using PHP's [glob function](http://php.net/manual/function.glob.php).
 
 ```graphql
 #import post/*.graphql
@@ -63,8 +65,8 @@ Instead of import each file, you can import multiple files that matches a patter
 
 ## Type Extensions
 
-Suppose you want to add a new type `Post` to your schema. First step, you create a new file `post.graphql`
-to contain the schema for that type.
+Suppose you want to add a new type `Post` to your schema.
+Create a new file `post.graphql` with the schema for that type.
 
 ```graphql
 type Post {
@@ -78,7 +80,7 @@ Then you add an import to your main schema file.
     #import post.graphql
 
 Now you want to add a few queries to actually fetch posts. You could add them to the main `Query` type
-in your main file, but that spreads the definition apart and could also grow quite large over time.
+in your main file, but that spreads the definition apart, and could also grow quite large over time.
 Another way would be to extend the `Query` type and colocate the type definition with its Queries in `post.graphql`.
 
 ```graphql
@@ -91,3 +93,5 @@ extend type Query {
   posts: [Post] @paginate
 }
 ```
+
+The fields in the `extend type` definition are merged with those of the original type.

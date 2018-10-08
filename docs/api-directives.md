@@ -79,16 +79,19 @@ Run the `bcrypt` function on the argument it is defined on.
 ```graphql
 type Mutation {
   createUser(name: String, password: String @bcrypt): User
-    @field(resolver: "App\\Http\\GraphQL\\Mutators\\UserMutator@create")
 }
 ```
 
 When you resolve the field, the argument will hold the `bcrypt` value.
 
 ```php
-class UserMutator
+<?php
+
+namespace App\Http\GraphQL\Mutations;
+
+class CreateUser
 {
-    public function create($root, array $args)
+    public function resolve($root, array $args)
     {
         return User::create([
           'name' => $args['name'],
@@ -159,10 +162,28 @@ Delete a model with a given id field. The field must be an `ID` type.
 ```graphql
 type Mutation {
   deletePost(id: ID!): Post @delete
-  # If you use global ids, you can set the `globalId` argument to true like so:
+}
+```
+
+If you use global ids, you can set the `globalId` argument to `true`.
+Lighthouse will decode the id for you automatically.
+
+```graphql
+type Mutation {
   deletePost(id: ID!): Post @delete(globalId: true)
 }
 ```
+
+You can also delete multiple models at once.
+Define a field that takes a list of IDs and returns a Collection of the
+deleted models.
+
+```graphql
+type Mutation {
+  deletePosts(id: [ID!]!): [Post!]! @delete
+}
+```
+
 
 ## @field
 
@@ -177,10 +198,10 @@ type Mutation {
 ```
 
 By default, Lighthouse looks for a class with the capitalized name of the field in `App\Http\GraphQL\Queries`
-or `App\Http\GraphQL\Mutations` and calls its `resolve` function with [the usual resolver arguments](). If you stick to that convention,
-you will not need to specify a directive at all.
+or `App\Http\GraphQL\Mutations` and calls its `resolve` function with [the usual resolver arguments](resolvers#resolver-function-signature).
+If you stick to that convention, you will not need to specify a directive at all.
 
-For example, the following field expects a class at `App\Http\GraphQL\Queries\LatestPost` that has a `public function resolve($rootValue, array $args, $context, ResolveInfo $resolveInfo)`
+For example, the following field:
 
 ```graphql
 type Query {
@@ -188,8 +209,27 @@ type Query {
 }
 ```
 
-Be aware you can this this to resolve any kind of field, so you may also use this to
-transform the value of scalar fields, e.g. reformat a date.
+expects a class like this:
+
+```php
+<?php
+
+namespace App\Http\GraphQL\Queries;
+
+use App\Models\Post;
+use GraphQL\Type\Definition\ResolveInfo;
+
+class LatestPost
+{
+    public function resolve($rootValue, array $args, $context, ResolveInfo $resolveInfo): Post
+    {
+        return Post::orderBy('published_at', 'DESC')->first();
+    }
+}
+```
+
+Be aware you can use this to resolve any kind of field. A resolver can be used for basic tasks 
+such as transforming the value of scalar fields, e.g. reformat a date.
 
 ```graphql
 type User {
@@ -363,7 +403,10 @@ type Mutation {
 
 ## @interface
 
-Define interface types in your schema.
+Make sure you read the [basics about Interfaces](types#interface) before deciding
+to use this directive, you probably don't need it.
+
+You can point Lighthouse to a custom type resolver.
 Set the `resolver` argument to a function that returns the implementing Object Type.
 
 ```graphql
@@ -373,18 +416,44 @@ interface Commentable @interface(resolver: "App\\GraphQL\\Interfaces\\Commentabl
 ```
 
 The function receives the value of the parent field as its single argument and must
-return an Object Type. Get the appropriate Object Type from Lighthouse's type registry.
+return an Object Type. You can get the appropriate Object Type from Lighthouse's type registry.
 
 ```php
+<?php
+
+namespace App\Http\GraphQL\Interfaces;
+
+use GraphQL\Type\Definition\Type;
+use GraphQL\Type\Definition\ResolveInfo;
+use Nuwave\Lighthouse\Schema\TypeRegistry;
+
 class Commentable
 {
-    public function resolveType($value): \GraphQL\Type\Definition\ObjectType
+    /** @var TypeRegistry */
+    protected $typeRegistry;
+
+    /**
+     * @param TypeRegistry $typeRegistry
+     */
+    public function __construct(TypeRegistry $typeRegistry)
     {
-        if ($value instanceof \App\Post) {
-            return graphql()->types()->get('Post');
-        } else if ($value instanceof \App\Video) {
-            return graphql()->types()->get('Video');
-        }
+        $this->typeRegistry = $typeRegistry;
+    }
+
+    /**
+     * Decide which GraphQL type a resolved value has.
+     *
+     * @param $rootValue The value that was resolved by the field. Usually an Eloquent model.
+     * @param $context
+     * @param ResolveInfo $info
+     *
+     * @return Type
+     */
+    public function resolveType($rootValue, $context, ResolveInfo $info): Type
+    {
+        // Default to getting a type with the same name as the passed in root value
+        // TODO implement your own resolver logic - if the default is fine, just delete this class
+        return $this->typeRegistry->get(class_basename($rootValue));
     }
 }
 ```
@@ -579,8 +648,11 @@ To use a completely custom validator, use the [@validate](#validate) directive.
 Point Lighthouse to your scalar definition class.
 [Learn how to implement your own scalar.](http://webonyx.github.io/graphql-php/type-system/scalar-types/)
 
+Lighthouse looks into your default scalar namespace for a class with the same name.
+You do not need to specify the directive in that case.
+
 ```graphql
-scalar DateTime @scalar
+scalar DateTime
 ```
 
 Pass the class name if it is different from the scalar type.
@@ -589,11 +661,10 @@ Pass the class name if it is different from the scalar type.
 scalar DateTime @scalar(class: "DateTimeScalar")
 ```
 
-Lighthouse looks for scalar classes in the default namespace defined in the configuration.
-You may override that by passing a fully qualified class name.
+If your class is not in the default namespace, pass a fully qualified class name.
 
 ```graphql
-scalar DateTime @scalar(class: "App\\GraphQL\\Scalars\\DateTimeScalar")
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 ```
 
 ## @update
@@ -617,7 +688,11 @@ type Mutation {
 
 ## @union
 
-Point Lighthouse to the function used to determine which implementation a value represents. [Read More](http://webonyx.github.io/graphql-php/type-system/unions/)
+Make sure you read the [basics about Unions](types#union) before deciding
+to use this directive, you probably don't need it.
+
+You can point Lighthouse to a custom type resolver.
+Set the `resolver` argument to a function that returns the implementing Object Type.
 
 ```graphql
 type User {
@@ -628,24 +703,50 @@ type Employee {
   employeeId: ID!
 }
 
-union Person @union(resolver: "App\\GraphQL\\UnionResolver@person") =
-    User
+union Person @union(resolver: "App\\GraphQL\\UnionResolver@person")
+  = User
   | Employee
 ```
 
 The function receives the value of the parent field as its single argument and must
-return an Object Type. Get the appropriate Object Type from Lighthouse's type registry.
+return an Object Type. You can get the appropriate Object Type from Lighthouse's type registry.
 
 ```php
-class UnionResolver
+<?php
+
+namespace App\Http\GraphQL\Unions;
+
+use GraphQL\Type\Definition\Type;
+use GraphQL\Type\Definition\ResolveInfo;
+use Nuwave\Lighthouse\Schema\TypeRegistry;
+
+class Person
 {
-    public function person($value): \GraphQL\Type\Definition\ObjectType
+    /** @var TypeRegistry */
+    protected $typeRegistry;
+
+    /**
+     * @param TypeRegistry $typeRegistry
+     */
+    public function __construct(TypeRegistry $typeRegistry)
     {
-        if ($value instanceof \App\User) {
-            return graphql()->types()->get('User');
-        } else if ($value instanceof \App\Employee) {
-            return graphql()->types()->get('Employee');
-        }
+        $this->typeRegistry = $typeRegistry;
+    }
+
+    /**
+     * Decide which GraphQL type a resolved value has.
+     *
+     * @param $rootValue The value that was resolved by the field. Usually an Eloquent model.
+     * @param $context
+     * @param ResolveInfo $info
+     *
+     * @return Type
+     */
+    public function resolveType($rootValue, $context, ResolveInfo $info): Type
+    {
+        // Default to getting a type with the same name as the passed in root value
+        // TODO implement your own resolver logic - if the default is fine, just delete this class
+        return $this->typeRegistry->get(class_basename($rootValue));
     }
 }
 ```

@@ -9,7 +9,7 @@ look into the [GraphQL documentation](https://graphql.org/learn/schema/)
 
 <br/>
 
-## Object Types
+## Object Type
 
 Object types define the resources of your API and are closely related to Eloquent models.
 They must have a unique name and have a set of fields.
@@ -32,24 +32,34 @@ type Query {
 ## Scalar
 
 Scalar types are the most basic elements of a GraphQL schema. There are a
-few built in scalars, such as `String` or `Int`. You can also define your own and
-use them in your schema.
+few built in scalars, such as `String` or `Int`.
+
+Lighthouse provides some scalars that work well with Laravel out of the box, you can find
+them in the [default schema](installation#Publish the default schema).
+
+Define your own scalar types by running `php artisan lighthouse:scalar <Scalar name>`
+and including it in your schema. Lighthouse will look for Scalar types in a configurable
+default namespace.
 
 ```graphql
-scalar DateTime @scalar
+scalar ZipCode
 
 type User {
-  ...
-  created_at: DateTime!
-  updated_at: DateTime
+  zipCode: ZipCode
 }
 ```
 
-To register scalars with Lighthouse, you need to define them in your schema and
-use the [@scalar](directives#scalar) directive to point to an implementing class.
-[Learn how to implement your own scalar.](http://webonyx.github.io/graphql-php/type-system/scalar-types/)
+You can also use third-party scalars, such as those provided by [mll-lab/graphql-php-scalars](https://github.com/mll-lab/graphql-php-scalars).
+Just `composer require` your package of choice and add a scalar definition to your schema.
+Use the [@scalar](directives#scalar) directive to point to any fully qualified class name:
 
-## Enum Types
+```graphql
+scalar Email @scalar(class: "Mll\\GraphQLScalars\\Email")
+```
+
+[Learn how to implement your own scalar.](https://webonyx.github.io/graphql-php/type-system/scalar-types/)
+
+## Enum
 
 Enums are types with a restricted set of values (similar to `enum` found in database migrations).
 They are defined as a list of `UPPERCASE` string keys. You can define the actual values through
@@ -92,7 +102,6 @@ Queries now return meaningful names instead of magic numbers.
 }
 ```
 
-
 ```json
 {
   "data": {
@@ -105,7 +114,7 @@ Queries now return meaningful names instead of magic numbers.
 }
 ```
 
-## Input Types
+## Input
 
 Input types can be used to describe complex objects for for field arguments.
 Beware that while they look similar to Object Types, they behave differently:
@@ -128,14 +137,14 @@ type Mutation {
 } 
 ```
 
-## Interface Types
+## Interface
 
 The GraphQL `interface` type is similar to a PHP `Interface`.
 It defines a set of common fields that all implementing types must also provide.
 A common use-case for interfaces with a Laravel project would be polymorphic relationships.
 
 ```graphql
-interface Named @interface(resolver: "App\\GraphQL\\Interfaces\\Named@resolveType"){
+interface Named {
   name: String!
 }
 ```
@@ -158,20 +167,24 @@ type User implements Named {
 ```
 
 Interfaces need a way of determining which concrete Object Type is returned by a
-particular query. Use the [@interface](directives#interface) directive to return a concrete implementation.
+particular query. Lighthouse provides a default type resolver that works by calling
+`class_basename($value)` on the value returned by the resolver.
+
+You can also provide a custom type resolver. Run `php artisan lighthouse:interface <Interface name>` to create
+a custom interface class. It is automatically put in the default namespace where Lighthouse can discover it by itself.
 
 Read more about them in the [GraphQL Reference](https://graphql.org/learn/schema/#interfaces) and the
 [docs for graphql-php](http://webonyx.github.io/graphql-php/type-system/interfaces/)
 
-## Union Types
+## Union
 
 A Union is an abstract type that simply enumerates other Object Types.
 They are similar to interfaces in that they can return different types, but they can not
 have fields defined.
 
 ```graphql
-union Person @union(resolver: "App\\GraphQL\\UnionResolver@person") =
-    User
+union Person
+  = User
   | Employee
 
 type User {
@@ -183,8 +196,10 @@ type Employee {
 }
 ```
 
-Unions need a way of determining which concrete Object Type is returned by a
-particular query. Use the [@union](directives#union) directive to return a concrete implementation.
+Just like Interfaces, you need a way to determine the concrete Object Type for a Union,
+based on the resolved value. If the default type resolver does not work for you, define your
+own using `php artisan lighthouse:union <Union name>`.
+It is automatically put in the default namespace where Lighthouse can discover it by itself.
 
 Read more about them in the [GraphQL Reference](https://graphql.org/learn/schema/#union-types) and the
 [docs for graphql-php](http://webonyx.github.io/graphql-php/type-system/unions/)
