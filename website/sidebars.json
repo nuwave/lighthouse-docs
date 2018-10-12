@@ -14,7 +14,8 @@
       "relay",
       "auth",
       "validation",
-      "relationships"
+      "relationships",
+      "plugin-development"
     ],
     "API Reference": [
       "directives",

@@ -36,3 +36,7 @@ type User {
 [@model](directives#model)
 
 [@globalId](directives#globalid)
+
+## Mutations
+
+// TODO write something about how Mutations must always take InputObjects and how flattening helps achieve that.
