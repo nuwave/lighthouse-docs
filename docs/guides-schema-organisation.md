@@ -76,8 +76,18 @@ type Post {
 ```
 
 Then you add an import to your main schema file.
-    
-    #import post.graphql
+
+```graphql
+#import post.graphql
+
+type Query {
+  me: User @auth
+}
+```
+
+__Attention__: A valid `Query` type definition with at least one field
+must be present in the root schema.
+This is because `extend type` needs the original type to get merged into. 
 
 Now you want to add a few queries to actually fetch posts. You could add them to the main `Query` type
 in your main file, but that spreads the definition apart, and could also grow quite large over time.
