@@ -13,10 +13,11 @@ use GraphQL\Type\Definition\ResolveInfo;
 public function resolve($rootValue, array $args, $context, ResolveInfo $resolveInfo);
 ```
 
-1. `$rootValue`: The object that contains the result returned from the resolver on the parent field
-2. `$args`: A array that contains the arguments that were passed into the field.
+1. `$rootValue`: The result that was returned from the parent field.
+When resolving a field that sits on one of the root types (`Query`, `Mutation`) this is `null`.
+2. `array $args`: The arguments that were passed into the field.
 For example, for a field call like `user(name: "Bob")` it would be `['name' => 'Bob']`
-3. `$context`: This can contain arbitrary data that is shared between all fields of a single query. Lighthouse
-passes in an instance of `Nuwave\Lighthouse\Schema\Context` by default.
-4. `$resolveInfo`: An instance of `GraphQL\Type\Definition\ResolveInfo`. Contains information about
-the query itself, such as the execution state of the query, including the field name, path to the field from the root, and more.
+3. `$context`: Arbitrary data that is shared between all fields of a single query.
+Lighthouse passes in an instance of `Nuwave\Lighthouse\Schema\Context` by default.
+4. `ResolveInfo $resolveInfo`: Information about the query itself,
+such as the execution state, the field name, path to the field from the root, and more.
