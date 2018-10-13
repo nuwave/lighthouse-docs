@@ -1,0 +1,25 @@
+{
+  "version-2.3-docs": {
+    "Getting Started": [
+      "version-2.3-installation",
+      "version-2.3-configuration"
+    ],
+    "The Basics": [
+      "version-2.3-schema",
+      "version-2.3-types",
+      "version-2.3-fields"
+    ],
+    "Guides": [
+      "version-2.3-schema-organisation",
+      "version-2.3-relay",
+      "version-2.3-auth",
+      "version-2.3-validation",
+      "version-2.3-relationships",
+      "version-2.3-plugin-development"
+    ],
+    "API Reference": [
+      "version-2.3-directives",
+      "version-2.3-resolvers"
+    ]
+  }
+}
