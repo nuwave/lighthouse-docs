@@ -12,7 +12,7 @@ great together with your Eloquent models.
 ## Hello World!
 
 As is the tradition of our people, this section will teach you how to say "hello world!" through Lighthouse.
-The most basic form of defining a resolver is to use the [@field](directives#field) directive.
+The following schema defines a simple field called `hello` that returns a `String`.
 
 ```graphql
 type Query {
