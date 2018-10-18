@@ -20,7 +20,6 @@ use GraphQL\Error\Debug;
 use GraphQL\Validator\Rules\DisableIntrospection;
 
 return [
-    
     /*
     |--------------------------------------------------------------------------
     | GraphQL endpoint
@@ -31,7 +30,7 @@ return [
     |
     */
     'route_name' => 'graphql',
-    
+
     /*
     |--------------------------------------------------------------------------
     | Enable GET requests
@@ -41,7 +40,7 @@ return [
     |
     */
     'route_enable_get' => true,
-    
+
     /*
     |--------------------------------------------------------------------------
     | Route configuration
@@ -110,7 +109,7 @@ return [
         'queries' => 'App\\Http\\GraphQL\\Queries',
         'scalars' => 'App\\Http\\GraphQL\\Scalars',
         'unions' => 'App\\Http\\GraphQL\\Unions',
-        'interfaces' => 'App\\Http\\GraphQL\\Unions'
+        'interfaces' => 'App\\Http\\GraphQL\\Interfaces',
     ],
 
     /*
@@ -163,7 +162,7 @@ return [
     |
     */
     'extensions' => [
-        #\Nuwave\Lighthouse\Schema\Extensions\TracingExtension::class
+        // \Nuwave\Lighthouse\Schema\Extensions\TracingExtension::class
     ],
 
      /*
@@ -186,5 +185,16 @@ return [
     |
     */
     'global_id_field' => 'id',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Batched Queries
+    |--------------------------------------------------------------------------
+    |
+    | GraphQL query batching means sending multiple queries to the server in one request,
+    | You may set this flag to process/deny batched queries.
+    |
+     */
+    'batched_queries' => true,
 ];
 ```
