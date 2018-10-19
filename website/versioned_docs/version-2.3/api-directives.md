@@ -316,7 +316,8 @@ for querying the `node` endpoint.
 
 Apply common settings to all fields of an Object Type.
 
-Simplify field directive definitions by defining a common namespace.
+Set a common namespace for the [@field](#field) and the [@complexity](#complexity) directives
+that are defined on the fields of the defined type.
 
 ```graphql
 extend type Query @group(namespace: "App\\Models") {
