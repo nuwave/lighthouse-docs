@@ -188,43 +188,17 @@ type Mutation {
 ## @field
 
 Specify a custom resolver function for a single field.
+
+In most cases, you do not even need this directive. Make sure you read about
+the built in directives for [querying data](fields#query-data) and [mutating data](fields#mutate-data),
+as well as the convention based approach to [implementing custom resolvers](fields#custom-resolver).
+
 Pass a class and a method to the `resolver` argument and seperate them with an `@` symbol.
 
 ```graphql
 type Mutation {
   createPost(title: String!): Post
     @field(resolver: "App\\Http\\GraphQL\\Mutations\\PostMutator@create")
-}
-```
-
-By default, Lighthouse looks for a class with the capitalized name of the field in `App\Http\GraphQL\Queries`
-or `App\Http\GraphQL\Mutations` and calls its `resolve` function with [the usual resolver arguments](resolvers#resolver-function-signature).
-If you stick to that convention, you will not need to specify a directive at all.
-
-For example, the following field:
-
-```graphql
-type Query {
-  latestPost: Post!
-}
-```
-
-expects a class like this:
-
-```php
-<?php
-
-namespace App\Http\GraphQL\Queries;
-
-use App\Models\Post;
-use GraphQL\Type\Definition\ResolveInfo;
-
-class LatestPost
-{
-    public function resolve($rootValue, array $args, $context, ResolveInfo $resolveInfo): Post
-    {
-        return Post::orderBy('published_at', 'DESC')->first();
-    }
 }
 ```
 

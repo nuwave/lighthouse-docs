@@ -258,3 +258,50 @@ This mutation will return the deleted object, so you will have a last chance to 
   }
 }
 ``` 
+
+## Custom resolvers
+
+Sometimes, the built-in directives just don't cut it - you need more control!
+Lighthouse allows you to implement your own resolver function for fields.
+
+By default, Lighthouse looks for a class with the capitalized name of the field in `App\Http\GraphQL\Queries`
+or `App\Http\GraphQL\Mutations` and calls its `resolve` function with [the usual resolver arguments](resolvers#resolver-function-signature).
+If you stick to that convention, you will not need to specify a directive at all.
+
+For example, the following field:
+
+```graphql
+type Query {
+  latestPost: Post!
+}
+```
+
+expects a class like this:
+
+```php
+<?php
+
+namespace App\Http\GraphQL\Queries;
+
+use App\Models\Post;
+use GraphQL\Type\Definition\ResolveInfo;
+
+class LatestPost
+{
+    public function resolve($rootValue, array $args, $context, ResolveInfo $resolveInfo): Post
+    {
+        return Post::orderBy('published_at', 'DESC')->first();
+    }
+}
+```
+
+The easiest way to create such a class is to use the built in artisan commands
+`lighthouse:query` and `lighthouse:mutation`. They both take a single argument:
+the name of the field you want to generate.
+
+For example, this is how you generate a class for the field `latestPost`:
+
+    php artisan lighthouse:query LatestPost
+
+If you need to implement custom resolvers for fields that are not on one of the
+root types `Query` or `Mutation`, you can use the [@field](directives#field) directive. 
