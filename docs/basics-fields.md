@@ -227,7 +227,7 @@ may fail to find the model you provided and return `null`:
 }
 ```
 
-## Delete
+### Delete
 
 Deleting data through your GraphQL API is really easy with the [@delete](directives#delete) directive. Dangerously easy.
 
