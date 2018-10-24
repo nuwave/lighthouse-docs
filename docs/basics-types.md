@@ -91,6 +91,14 @@ type Query {
 In this example, the underlying values are actually integers. When the models are retrieved from
 the database, the mapping is applied and the integers are converted to the defined string keys.
 
+```php
+return [
+  ['name' => 'Hans', 'status' => 0],
+  ['name' => 'Pamela', 'status' => 1],
+  ['name' => 'Gerhard', 'status' => 2],
+];
+```
+
 Queries now return meaningful names instead of magic numbers.
 
 ```graphql
@@ -108,11 +116,21 @@ Queries now return meaningful names instead of magic numbers.
     "employees": [
       {"name": "Hans", "status": "INTERN"},
       {"name": "Pamela", "status": "EMPLOYEE"},
-      {"name": "Gerhard", "status": "FIRED"}
+      {"name": "Gerhard", "status": "TERMINATED"}
     ]
   }
 }
 ```
+
+If the internal value of the enum is the same as the field name, `@enum` can be omitted:
+
+```graphql
+enum Role {
+  ADMIN
+}
+```
+
+The PHP internal value of the field `ADMIN` will be `string('ADMIN')`.
 
 ## Input
 
