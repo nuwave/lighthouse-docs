@@ -17,6 +17,11 @@ const users = [
     image: imgBase + 'traimmu.jpg',
     infoLink: 'https://www.traimmu.com',
   },
+  {
+    caption: 'Entry Ninja',
+    image: imgBase + 'entryninja.png',
+    infoLink: 'https://www.entryninja.com',
+  },
 ]
 
 module.exports = users
