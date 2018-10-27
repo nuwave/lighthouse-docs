@@ -1,6 +1,6 @@
 ---
 id: relationships
-title: Eloquent relationships
+title: Eloquent Relationships
 ---
 
 Eloquent relationships can be accessed just like any other properties.
@@ -24,7 +24,7 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
     
-    public function author(): HasMany
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -40,54 +40,87 @@ type Post {
 }
 ```
 
-While this approach is fine if you only ever fetch a single post, performance might not be
-optimal when you are fetching a list of posts. Lighthouse has got you covered with specialized
-directives that optimize the Queries for you.
+This approach is fine if performance is not super critical or if you only fetch a single post.
+However, as your queries become larger and more complex, you might want to optimise performance.
 
-## HasMany
+## Defining Relationships
 
-Just like in Laravel, you can define [Eloquent's HasMany-Relationship](https://laravel.com/docs/eloquent-relationships#one-to-many) in your schema.
-Use the [@hasMany](directives#hasMany) directive to mark a field as related.
+Just like in Laravel, you can define [Eloquent Relationships](https://laravel.com/docs/eloquent-relationships) in your schema.
+Lighthouse has got you covered with specialized directives that optimize the Queries for you.
+
+Suppose you want to load a list of posts and associated comments. When you tell
+Lighthouse about the relationship, it automatically eager loads the comments when you need them.
+
+### One To One
+
+Use the [@hasOne](directives#hasOne) directive to define a [one-to-one relationship](https://laravel.com/docs/eloquent-relationships#one-to-one)
+between two types in your schema.
 
 ```graphql
 type User {
-  posts: [Post!]! @hasMany
+  phone: Phone @hasOne
 }
 ```
 
-The Eloquent class underneath should look like this:
+The inverse can be defined through the [@belongsTo](directives#belongsTo) directive.
 
-```php
-<?php
-
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-class User extends Authenticatable
-{
-    public function posts(): HasMany
-    {
-        return $this->hasMany(Post::class);
-    }
+```graphql
+type Phone {
+  user: User @belongsTo
 }
 ```
 
-Now, when you query a list of users, Lighthouse is able to batch the relationship queries
-for the Posts together.
+### One To Many
 
-## BelongsTo
-
-The [@belongsTo](directives#belongsTo) directive resolves a field through the Eloquent `BelongsTo` relationship.
+Use the [@hasMany](directives#hasMany) directive to define a [one-to-many relationship](https://laravel.com/docs/eloquent-relationships#one-to-many).
 
 ```graphql
 type Post {
-  author: User @belongsTo
+  comments: [Comment!]! @hasMany
 }
 ```
 
-It assumes both the field and the relationship method to have the same name.
+Again, the inverse is defined with the [@belongsTo](directives#belongsTo) directive.
+
+```graphql
+type Comment {
+  post: Post! @belongsTo
+}
+```
+
+### Many To Many
+
+While [many-to-many relationships](https://laravel.com/docs/5.7/eloquent-relationships#many-to-many)
+are a bit more work to set up in Laravel, defining them in Lighthouse is a breeze.
+Use the [@belongsToMany](directives#belongsToMany) directive to define it.
+
+```graphql
+type User {
+  roles: [Role!]! @belongsToMany
+}
+```
+
+The inverse works the same.
+
+```graphql
+type Role {
+  users: [User!]! @belongsToMany
+}
+```
+
+## Renaming Relations
+
+When you define a relation, Lighthouse assumes that the field and the relationship
+method have the same name. If you need to name your field differently, you have to
+specify the name of the method.
+
+```
+type Post {
+  author: User! @belongsTo(relation: "user")
+}
+```
+
+This would work for the following model:
 
 ```php
 <?php
@@ -99,7 +132,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model 
 {
-    public function author(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
