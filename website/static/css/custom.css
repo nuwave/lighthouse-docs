@@ -493,6 +493,10 @@ pre {
   margin: 0;
 }
 
+p {
+  margin-bottom: 1em;
+}
+
 button {
   background: transparent;
   padding: 0;

@@ -12,6 +12,8 @@ may utilize this to offer users extra functionality that is not available in the
 - Consider improving the extensibility of Lighthouse with a PR instead of doing workarounds.
 - Add your plugin to the Resources page once it is done.
 
+<br/>
+
 ## Add schema definitions
 
 You might want to provide some additional types to the schema. The preferred way to

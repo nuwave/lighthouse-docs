@@ -7,8 +7,6 @@ To fetch data from your GraphQL endpoint, you need to define resolvers for your 
 Lighthouse makes this easy by providing easy to use, pre-built resolvers that work
 great together with your Eloquent models.
 
-<br/>
-
 ## Hello World!
 
 As is the tradition of our people, this section will teach you how to say "hello world!" through Lighthouse.

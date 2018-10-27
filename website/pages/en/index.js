@@ -169,7 +169,6 @@ type Mutation {
               into Lighthouse directives, so you can reuse existing logic and
               work the way you are used to.
             </p>
-            <br/>
             <p>
               If you already have your models and
               migrations set up, it only takes minutes to get a GraphQL
