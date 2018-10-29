@@ -1,6 +1,6 @@
 ---
 id: schema
-title: Defining your Schema
+title: Schema
 ---
 
 A schema defines the capabilities of a GraphQL server.

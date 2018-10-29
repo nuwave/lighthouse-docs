@@ -1,6 +1,6 @@
 ---
-id: schema-organisation
-title: Organize your Schema
+id: schema-organization
+title: Schema Organization
 ---
 
 As you add more and more types to your schema, it can grow quite large.

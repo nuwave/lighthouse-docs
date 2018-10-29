@@ -1,6 +1,6 @@
 ---
 id: version-2.2-schema
-title: Defining your Schema
+title: Schema
 original_id: schema
 ---
 

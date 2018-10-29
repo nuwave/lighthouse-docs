@@ -4,29 +4,199 @@
     "next": "Next",
     "previous": "Previous",
     "tagline": "GraphQL Server for Laravel",
-    "directives": "Directives",
-    "resolvers": "Resolvers",
-    "fields": "Fields",
-    "schema": "Defining your Schema",
-    "types": "Types",
-    "configuration": "Configuration",
-    "installation": "Installation",
-    "auth": "Authentication & Authorization",
-    "plugin-development": "Plugin Development",
-    "relationships": "Eloquent relationships",
-    "relay": "Relay",
-    "schema-organisation": "Organize your Schema",
-    "validation": "Validation",
-    "Docs": "Docs",
-    "Resources": "Resources",
-    "Users": "Users",
-    "GitHub": "GitHub",
-    "Getting Started": "Getting Started",
-    "The Basics": "The Basics",
-    "Guides": "Guides",
-    "API Reference": "API Reference",
-    "Schema": "Schema",
-    "Directives": "Directives"
+    "docs": {
+      "directives": {
+        "title": "Directives"
+      },
+      "resolvers": {
+        "title": "Resolvers"
+      },
+      "fields": {
+        "title": "Fields"
+      },
+      "schema": {
+        "title": "Schema"
+      },
+      "types": {
+        "title": "Types"
+      },
+      "configuration": {
+        "title": "Configuration"
+      },
+      "installation": {
+        "title": "Installation"
+      },
+      "auth": {
+        "title": "Authentication & Authorization"
+      },
+      "error-handling": {
+        "title": "Error Handling"
+      },
+      "plugin-development": {
+        "title": "Plugin Development"
+      },
+      "relationships": {
+        "title": "Eloquent Relationships"
+      },
+      "relay": {
+        "title": "Relay"
+      },
+      "schema-organization": {
+        "title": "Schema organization"
+      },
+      "validation": {
+        "title": "Validation"
+      },
+      "version-2.0-directives-args": {
+        "title": "Arguments"
+      },
+      "version-2.0-directives-fields": {
+        "title": "Fields"
+      },
+      "version-2.0-directives-nodes": {
+        "title": "Nodes"
+      },
+      "version-2.0-configuration": {
+        "title": "Configuration"
+      },
+      "version-2.0-installation": {
+        "title": "Installation"
+      },
+      "version-2.0-introduction": {
+        "title": "Introduction"
+      },
+      "version-2.0-schema-scalars": {
+        "title": "Scalar types"
+      },
+      "version-2.0-schema": {
+        "title": "Schema Definition"
+      },
+      "version-2.1-directives-crud": {
+        "title": "Eloquent CRUD"
+      },
+      "version-2.1-directives-laravel": {
+        "title": "Laravel Helpers"
+      },
+      "version-2.1-directives-misc": {
+        "title": "Miscellaneous"
+      },
+      "version-2.1-directives-queries": {
+        "title": "Eloquent Queries"
+      },
+      "version-2.1-directives-relationships": {
+        "title": "Eloquent Relationships"
+      },
+      "version-2.1-directives-relay": {
+        "title": "Relay Helpers"
+      },
+      "version-2.1-directives-schema": {
+        "title": "Schema Directives"
+      },
+      "version-2.1-directives-security": {
+        "title": "Security"
+      },
+      "version-2.1-configuration": {
+        "title": "Configuration"
+      },
+      "version-2.1-installation": {
+        "title": "Installation"
+      },
+      "version-2.1-schema-extending": {
+        "title": "Extending the Schema"
+      },
+      "version-2.2-directives": {
+        "title": "Directives"
+      },
+      "version-2.2-resolvers": {
+        "title": "Resolvers"
+      },
+      "version-2.2-fields": {
+        "title": "Fields"
+      },
+      "version-2.2-schema": {
+        "title": "Schema"
+      },
+      "version-2.2-types": {
+        "title": "Types"
+      },
+      "version-2.2-configuration": {
+        "title": "Configuration"
+      },
+      "version-2.2-installation": {
+        "title": "Installation"
+      },
+      "version-2.2-auth": {
+        "title": "Authentication & Authorization"
+      },
+      "version-2.2-relationships": {
+        "title": "Eloquent Relationships"
+      },
+      "version-2.2-relay": {
+        "title": "Relay"
+      },
+      "version-2.2-schema-organization": {
+        "title": "Schema organization"
+      },
+      "version-2.2-validation": {
+        "title": "Validation"
+      },
+      "version-2.3.1-configuration": {
+        "title": "Configuration"
+      },
+      "version-2.3-directives": {
+        "title": "Directives"
+      },
+      "version-2.3-resolvers": {
+        "title": "Resolvers"
+      },
+      "version-2.3-fields": {
+        "title": "Fields"
+      },
+      "version-2.3-types": {
+        "title": "Types"
+      },
+      "version-2.3-configuration": {
+        "title": "Configuration"
+      },
+      "version-2.3-installation": {
+        "title": "Installation"
+      },
+      "version-2.3-plugin-development": {
+        "title": "Plugin Development"
+      },
+      "version-2.3-relationships": {
+        "title": "Eloquent Relationships"
+      },
+      "version-2.3-relay": {
+        "title": "Relay"
+      },
+      "version-2.3-schema-organization": {
+        "title": "Schema organization"
+      },
+      "version-2.4.0-directives": {
+        "title": "Directives"
+      },
+      "version-2.4.0-fields": {
+        "title": "Fields"
+      },
+      "version-2.4.0-configuration": {
+        "title": "Configuration"
+      }
+    },
+    "links": {
+      "Docs": "Docs",
+      "Resources": "Resources",
+      "Users": "Users",
+      "GitHub": "GitHub"
+    },
+    "categories": {
+      "Getting Started": "Getting Started",
+      "The Basics": "The Basics",
+      "Guides": "Guides",
+      "API Reference": "API Reference",
+      "Schema": "Schema",
+      "Directives": "Directives"
+    }
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",
