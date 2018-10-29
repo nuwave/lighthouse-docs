@@ -1,6 +1,6 @@
 ---
 id: version-2.2-relationships
-title: Eloquent relationships
+title: Eloquent Relationships
 original_id: relationships
 ---
 
