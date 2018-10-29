@@ -5,7 +5,7 @@ original_id: introduction
 ---
 
 Lighthouse allows you to create a [GraphQL](http://facebook.github.io/graphql/) Server with [Laravel](https://laravel.com/docs). This package extends [graphql-php](https://github.com/webonyx/graphql-php) and works with [Relay Modern](https://facebook.github.io/relay/), [Apollo Client](https://www.apollographql.com/client), [urql](https://github.com/FormidableLabs/urql) and any other client that works with GraphQL backends (or that are capable of making POST requests).
-<br /><br />
+
 Lighthouse enables schema-first development by allowing you to use the native Schema Definition Language to describe your data.
 Leverage server-side directives to add functionality and bring your schema to life.
 

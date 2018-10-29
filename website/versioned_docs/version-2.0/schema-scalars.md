@@ -5,7 +5,7 @@ original_id: schema-scalars
 ---
 
 As we learned earlier, we can use Scalar types to serialize, deserialize and validate values. 
-To use these scalar types we have to define them in our schema.<br /><br />
+To use these scalar types we have to define them in our schema.
 
 ## DateTime
 

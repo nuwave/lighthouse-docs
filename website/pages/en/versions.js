@@ -26,7 +26,6 @@ const Versions = () => {
             <h2>{siteConfig.title + ' Versions'}</h2>
           </header>
           <p>New versions of this project are released every so often.</p>
-          <br />
           <h3 id="latest">Current version (Stable)</h3>
           <table className="versions">
             <tbody>
@@ -59,7 +58,6 @@ const Versions = () => {
             </tr>
             </tbody>
           </table>
-          <br />
           <h3 id="archive">Past Versions</h3>
           <table className="versions">
             <tbody>

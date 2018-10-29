@@ -8,7 +8,6 @@ original_id: schema
 
 <br />
 In order for GraphQL to register your types/mutations/queries, we must create a schema file.
-<br /><br />
 
 ## Object Types
 

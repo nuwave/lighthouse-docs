@@ -7,8 +7,6 @@ original_id: schema-organisation
 As you add more and more types to your schema, it can grow quite large.
 Learn how to split your schema across multiple files and organize your types.
 
-<br/>
-
 ## Schema Imports
 
 Suppose you created your schema files likes this:
@@ -61,8 +59,6 @@ It will be loaded using PHP's [glob function](http://php.net/manual/function.glo
 ```graphql
 #import post/*.graphql
 ```
-
-<br/>
 
 ## Type Extensions
 

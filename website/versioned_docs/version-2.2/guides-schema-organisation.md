@@ -7,8 +7,6 @@ original_id: schema-organisation
 As you add more and more types to your schema, it can grow quite large.
 Learn how to split your schema across multiple files and organize your types.
 
-<br/>
-
 ## Schema Imports
 
 Suppose you created your schema files likes this:
@@ -44,8 +42,6 @@ type User {
 ```
 
 The import statements are followed recursively, so it is easy to organize even the most complex of schemas.
-
-<br/>
 
 ## Type Extensions
 

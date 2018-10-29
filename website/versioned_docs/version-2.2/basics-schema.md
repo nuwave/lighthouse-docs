@@ -6,9 +6,6 @@ original_id: schema
 
 A schema defines the capabilities of a GraphQL server.
 Much like a database schema, it describes the structure and the types your API can return.
-Lighthouse provides a default schema
-
-<br />
 
 ## Types
 
