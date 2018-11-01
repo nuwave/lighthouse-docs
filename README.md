@@ -36,3 +36,7 @@ First, go ahead and `git clone` this repo (or your fork) and `cd` in the project
     cd website
     yarn
     yarn run start
+
+### Tag a new version
+
+    yarn run version x.y.z

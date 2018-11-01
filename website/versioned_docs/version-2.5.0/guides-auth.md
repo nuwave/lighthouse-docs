@@ -1,6 +1,7 @@
 ---
-id: auth
+id: version-2.5.0-auth
 title: Authentication & Authorization
+original_id: auth
 ---
 
 ## Authentication

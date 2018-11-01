@@ -1,6 +1,7 @@
 ---
-id: configuration
+id: version-2.5.0-configuration
 title: Configuration
+original_id: configuration
 ---
 
 Lighthouse comes with sensible configuration defaults and works right out of the box.
