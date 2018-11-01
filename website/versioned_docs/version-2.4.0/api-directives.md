@@ -730,7 +730,7 @@ class Person
 ## @validate
 
 Use a custom validator class for validating the contents of a complete field.
-The validator class must extend `Nuwave\Lighthouse\Support\Validator\Validator`.
+The validator class must extend `Nuwave\Lighthouse\Execution\GraphQLValidator`.
 
 ```graphql
 type Mutation {
