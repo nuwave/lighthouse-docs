@@ -73,6 +73,44 @@ type Post {
 }
 ```
 
+## @belongsToMany
+
+Resolves a field through the Eloquent `BelongsToMany` relationship.
+
+```graphql
+type User {
+  roles: [Role!]! @belongsToMany
+}
+```
+
+It assumes both the field and the relationship method to have the same name.
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+class User extends Model 
+{
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
+    }
+}
+```
+
+The directive accepts an optional `relation` argument if your relationship method
+has a different name than the field.
+
+```graphql
+type User {
+  jobs: [Role!]! @belongsToMany(relation: "roles")
+}
+```
+
 ## @bcrypt
 
 Run the `bcrypt` function on the argument it is defined on.
