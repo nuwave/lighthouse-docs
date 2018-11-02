@@ -258,7 +258,17 @@ type Mutation {
 }
 ```
 
-Be aware you can use this to resolve any kind of field. A resolver can be used for basic tasks 
+If your field is defined on the root types `Query` or `Mutation`, you can take advantage
+of the default namespaces that are defined in the [configuration](configuration). The following
+will look for a class in `App\Http\Queries` by default.
+
+```graphql
+type Query {
+  usersTotal: Int @field("Statistics@usersTotal")
+}
+```
+
+Be aware that resolvers are not limited to root fields. A resolver can be used for basic tasks 
 such as transforming the value of scalar fields, e.g. reformat a date.
 
 ```graphql
