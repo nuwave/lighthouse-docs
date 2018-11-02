@@ -184,6 +184,24 @@ type Query {
 }
 ```
 
+A custom complexity function may look like the following.
+You may look up the [complexity function signature](resolvers#complexity-function-signature)
+
+```php
+namespace App\Security;
+
+class ComplexityAnalyzer {
+
+    public function userPosts(int $childrenComplexity, array $args): int
+    {
+        $postComplexity = $args['includeFullText'])
+            ? 3
+            : 2;
+
+        return $childrenComplexity * $postComplexity;
+    }
+```
+
 ## @create
 
 Applies to fields to create a new Eloquent model with the given arguments.

@@ -66,6 +66,23 @@ type User {
 }
 ```
 
+A custom complexity function may look like the following.
+
+```php
+namespace App\Security;
+
+class ComplexityAnalyzer {
+
+    public function userPosts(int $childrenComplexity, array $args): int
+    {
+        $postComplexity = $args['includeFullText'])
+            ? 3
+            : 2;
+
+        return $childrenComplexity * $postComplexity;
+    }
+```
+
 ## @middleware
 
 The `@middleware` directive can be used to run middleware on a selected field(s).
