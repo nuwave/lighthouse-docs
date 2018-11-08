@@ -26,11 +26,11 @@
       "installation": {
         "title": "Installation"
       },
+      "tutorial": {
+        "title": "Tutorial"
+      },
       "auth": {
         "title": "Authentication & Authorization"
-      },
-      "error-handling": {
-        "title": "Error Handling"
       },
       "plugin-development": {
         "title": "Plugin Development"
@@ -42,7 +42,7 @@
         "title": "Relay"
       },
       "schema-organization": {
-        "title": "Schema organization"
+        "title": "Schema Organization"
       },
       "validation": {
         "title": "Validation"
