@@ -53,7 +53,7 @@ Just `composer require` your package of choice and add a scalar definition to yo
 Use the [@scalar](directives#scalar) directive to point to any fully qualified class name:
 
 ```graphql
-scalar Email @scalar(class: "Mll\\GraphQLScalars\\Email")
+scalar Email @scalar(class: "MLL\\GraphQLScalars\\Email")
 ```
 
 [Learn how to implement your own scalar.](https://webonyx.github.io/graphql-php/type-system/scalar-types/)
