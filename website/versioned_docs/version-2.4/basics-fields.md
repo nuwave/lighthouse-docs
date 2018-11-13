@@ -1,5 +1,5 @@
 ---
-id: version-2.4.0-fields
+id: version-2.4-fields
 title: Fields
 original_id: fields
 ---

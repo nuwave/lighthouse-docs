@@ -1,5 +1,5 @@
 ---
-id: version-2.5.0-resolvers
+id: version-2.5-resolvers
 title: Resolvers
 original_id: resolvers
 ---

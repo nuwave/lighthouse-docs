@@ -140,9 +140,6 @@
       "version-2.2-validation": {
         "title": "Validation"
       },
-      "version-2.3.1-configuration": {
-        "title": "Configuration"
-      },
       "version-2.3-directives": {
         "title": "Directives"
       },
@@ -173,38 +170,50 @@
       "version-2.3-schema-organization": {
         "title": "Schema organization"
       },
-      "version-2.4.0-directives": {
+      "version-2.4-directives": {
         "title": "Directives"
       },
-      "version-2.4.0-fields": {
+      "version-2.4-fields": {
         "title": "Fields"
       },
-      "version-2.4.0-configuration": {
+      "version-2.4-configuration": {
         "title": "Configuration"
       },
-      "version-2.5.0-directives": {
+      "version-2.5-directives": {
         "title": "Directives"
       },
-      "version-2.5.0-resolvers": {
+      "version-2.5-resolvers": {
         "title": "Resolvers"
       },
-      "version-2.5.0-types": {
+      "version-2.5-types": {
         "title": "Types"
       },
-      "version-2.5.0-configuration": {
+      "version-2.5-configuration": {
         "title": "Configuration"
       },
-      "version-2.5.0-auth": {
+      "version-2.5-auth": {
         "title": "Authentication & Authorization"
       },
-      "version-2.5.0-plugin-development": {
+      "version-2.5-plugin-development": {
         "title": "Plugin Development"
       },
-      "version-2.5.0-relationships": {
+      "version-2.5-relationships": {
         "title": "Eloquent Relationships"
       },
-      "version-2.5.0-schema-organization": {
+      "version-2.5-schema-organization": {
         "title": "Schema Organization"
+      },
+      "version-2.6-directives": {
+        "title": "Directives"
+      },
+      "version-2.6-configuration": {
+        "title": "Configuration"
+      },
+      "version-2.6-installation": {
+        "title": "Installation"
+      },
+      "version-2.6-tutorial": {
+        "title": "Tutorial"
       }
     },
     "links": {

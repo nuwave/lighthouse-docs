@@ -1,5 +1,5 @@
 ---
-id: version-2.5.0-configuration
+id: version-2.6-configuration
 title: Configuration
 original_id: configuration
 ---
@@ -8,7 +8,7 @@ Lighthouse comes with sensible configuration defaults and works right out of the
 Should you feel the need to change your configuration, you need to publish the configuration file first.
 
 ```bash
-$ php artisan vendor:publish --provider="Nuwave\Lighthouse\Providers\LighthouseServiceProvider"
+$ php artisan vendor:publish --provider="Nuwave\Lighthouse\Providers\LighthouseServiceProvider" --tag=config
 ```
 
 The following configuration will be placed in `config/lighthouse.php`.

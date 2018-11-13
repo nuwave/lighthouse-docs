@@ -1,5 +1,5 @@
 ---
-id: version-2.5.0-types
+id: version-2.5-types
 title: Types
 original_id: types
 ---

@@ -1,5 +1,5 @@
 ---
-id: version-2.5.0-auth
+id: version-2.5-auth
 title: Authentication & Authorization
 original_id: auth
 ---

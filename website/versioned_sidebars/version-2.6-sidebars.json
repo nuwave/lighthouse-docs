@@ -1,0 +1,26 @@
+{
+  "version-2.6-docs": {
+    "Getting Started": [
+      "version-2.6-installation",
+      "version-2.6-configuration",
+      "version-2.6-tutorial"
+    ],
+    "The Basics": [
+      "version-2.6-schema",
+      "version-2.6-types",
+      "version-2.6-fields"
+    ],
+    "Guides": [
+      "version-2.6-schema-organization",
+      "version-2.6-relay",
+      "version-2.6-auth",
+      "version-2.6-validation",
+      "version-2.6-relationships",
+      "version-2.6-plugin-development"
+    ],
+    "API Reference": [
+      "version-2.6-directives",
+      "version-2.6-resolvers"
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 ---
-id: version-2.3.1-configuration
+id: version-2.4-configuration
 title: Configuration
 original_id: configuration
 ---
@@ -105,11 +105,11 @@ return [
     */
     'namespaces' => [
         'models' => 'App\\Models',
-        'mutations' => 'App\\Http\\GraphQL\\Mutations',
         'queries' => 'App\\Http\\GraphQL\\Queries',
-        'scalars' => 'App\\Http\\GraphQL\\Scalars',
-        'unions' => 'App\\Http\\GraphQL\\Unions',
+        'mutations' => 'App\\Http\\GraphQL\\Mutations',
         'interfaces' => 'App\\Http\\GraphQL\\Interfaces',
+        'unions' => 'App\\Http\\GraphQL\\Unions',
+        'scalars' => 'App\\Http\\GraphQL\\Scalars',
     ],
 
     /*

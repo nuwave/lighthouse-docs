@@ -1,5 +1,5 @@
 ---
-id: version-2.5.0-plugin-development
+id: version-2.5-plugin-development
 title: Plugin Development
 original_id: plugin-development
 ---

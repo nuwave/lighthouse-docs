@@ -1,5 +1,5 @@
 ---
-id: version-2.4.0-directives
+id: version-2.4-directives
 title: Directives
 original_id: directives
 ---

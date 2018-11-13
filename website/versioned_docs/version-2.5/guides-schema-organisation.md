@@ -1,5 +1,5 @@
 ---
-id: version-2.5.0-schema-organization
+id: version-2.5-schema-organization
 title: Schema Organization
 original_id: schema-organization
 ---
