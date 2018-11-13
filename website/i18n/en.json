@@ -181,6 +181,30 @@
       },
       "version-2.4.0-configuration": {
         "title": "Configuration"
+      },
+      "version-2.5.0-directives": {
+        "title": "Directives"
+      },
+      "version-2.5.0-resolvers": {
+        "title": "Resolvers"
+      },
+      "version-2.5.0-types": {
+        "title": "Types"
+      },
+      "version-2.5.0-configuration": {
+        "title": "Configuration"
+      },
+      "version-2.5.0-auth": {
+        "title": "Authentication & Authorization"
+      },
+      "version-2.5.0-plugin-development": {
+        "title": "Plugin Development"
+      },
+      "version-2.5.0-relationships": {
+        "title": "Eloquent Relationships"
+      },
+      "version-2.5.0-schema-organization": {
+        "title": "Schema Organization"
       }
     },
     "links": {
