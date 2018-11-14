@@ -39,4 +39,6 @@ First, go ahead and `git clone` this repo (or your fork) and `cd` in the project
 
 ### Tag a new version
 
-    yarn run version x.y.z
+Only feature releases get a new docs version, so we do not tag the docs as `1.2.3`, just `1.2` does suffice.
+
+    yarn run version x.y
