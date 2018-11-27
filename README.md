@@ -1,3 +1,7 @@
+# We have moved 🚚
+
+> The new docs are now part of the main repository https://github.com/nuwave/lighthouse
+
 <img src="logo.png" width="150" height="150">
 
 # Lighthouse Docs
@@ -8,7 +12,7 @@
 These are the docs for Lighthouse, a GraphQL server for Laravel.
 
 **For more information, head over [to the main project](https://github.com/nuwave/lighthouse)**
-**or take a look at the [documentation website](https://lighthouse-php.netlify.com/)**
+**or take a look at the [documentation website](https://lighthouse-php.com/)**
 
 The docs are built with [Docusaurus](https://docusaurus.io/).
 
