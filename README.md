@@ -1,6 +1,4 @@
-# We have moved 🚚
-
-> The new docs are now part of the main repository https://github.com/nuwave/lighthouse
+# The docs for Lighthouse have moved to the main repository https://github.com/nuwave/lighthouse
 
 <img src="logo.png" width="150" height="150">
 
